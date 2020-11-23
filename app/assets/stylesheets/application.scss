@@ -1,1 +1,20 @@
-@import "bootstrap"
+@import "bootstrap";
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid gray;
+  a {
+    color: gray;
+    &:hover {
+      color: #383838;
+    }
+  }
+}
+
+/* header */
+.headersummary {
+  margin-top: 100px;
+
+}

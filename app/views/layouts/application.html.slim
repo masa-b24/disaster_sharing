@@ -8,4 +8,33 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    header.navbar.navbar-dark.bg-dark.navbar-fixed-top
+      .container
+        = link_to "災害情報アプリ", "#", class: "text-light"
+        ul.nav
+          li.nav-item = link_to "ニッチ化災害SNSとは", "#", class: "text-light nav-link"
+          li.nav-item = link_to "新規登録", "#", class: "text-light nav-link"
+          li.nav-item = link_to "ログイン", "#", class: "text-light nav-link"
+    .container
+      - if flash.notice.present?
+        .alert.alert-success=flash.notice      
+      = yield
+      footer
+        footer-bookmark
+          footer-title.float-left
+            h6 災害情報アプリ
+          footer-bookmark-list.small.float-right
+            ul.d-inline-block.list-unstyled
+              li.nav-item = link_to "お問い合わせ", "#", class: "nav-link"
+              li.nav-item = link_to "ランクについて", "#", class: "nav-link"
+              li.nav-item = link_to "災害特集", "#", class: "nav-link"
+            ul.d-inline-block.list-unstyled
+              li.nav-item = link_to "注意事項", "#", class: "nav-link"
+              li.nav-item = link_to "製作者の体験談", "#", class: "nav-link"
+              li.nav-item = link_to "全国のトピック", "#", class: "nav-link"
+            ul.d-inline-block.list-unstyled
+              li.nav-item = link_to "注意事項", "#", class: "nav-link"
+              li.nav-item = link_to "製作者の体験談", "#", class: "nav-link"
+              li.nav-item = link_to "全国のトピック", "#", class: "nav-link"
+
+
