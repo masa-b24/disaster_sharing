@@ -13,8 +13,8 @@ html
         = link_to "災害情報アプリ", "#", class: "text-light"
         ul.nav
           li.nav-item = link_to "ニッチ化災害SNSとは", "#", class: "text-light nav-link"
-          li.nav-item = link_to "新規登録", "#", class: "text-light nav-link"
-          li.nav-item = link_to "ログイン", "#", class: "text-light nav-link"
+          li.nav-item = link_to "新規登録", new_user_registration_path, class: "text-light nav-link"
+          li.nav-item = link_to "ログイン", new_user_session_path, class: "text-light nav-link"
     .container
       - if flash.notice.present?
         .alert.alert-success=flash.notice      
