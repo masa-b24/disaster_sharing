@@ -18,3 +18,54 @@ footer {
   margin-top: 100px;
 
 }
+
+/* universal */
+body {
+  background-color: rgb(247, 247, 247);
+}
+
+.auth_title {
+  margin-top: 30px;
+}
+
+section {
+  text-align: center;
+}
+
+.auth_form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+  margin-top: 30px;
+  margin-bottom: 22px;
+}
+
+/* 新規登録,ログインページ */
+.divider {
+  padding-top: 1px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+}
+
+.line::before, .line::after {
+  content: "";
+	flex-grow: 1;
+	height: 1px;
+	background: #444;
+	display: block;
+}
+
+.line::before {
+  margin-right: 2em;
+  background: linear-gradient(-90deg, #888, transparent);
+}
+
+.line::after {
+  margin-left: 2em;
+  background: linear-gradient(90deg, #888, transparent);
+}
