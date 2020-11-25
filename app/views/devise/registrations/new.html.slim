@@ -33,6 +33,10 @@
           = f.label :password_confirmation
           br
           = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+        .field
+          = f.label :prefecture_id, "都道府県"
+          br
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい'
         .actions
           = f.submit "新規登録", class: "btn btn-success btn-block"
       
