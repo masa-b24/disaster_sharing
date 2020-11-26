@@ -1,0 +1,14 @@
+.auth_title
+  section
+    h2
+      | #{current_user.prefecture.name}の災害情報
+.row
+  aside.col-md-3
+    section.user_info
+      = link_to '投稿する', new_post_path, class: 'btn btn-primary'
+      h6 = current_user.name
+      = link_to 'マイページはこちら▶︎', "#"
+  .col-md-6
+    h4 5日間で話題のtopic
+  .col-md-3
+    h4 新着投稿
