@@ -12,3 +12,5 @@
     h4 5日間で話題のtopic
   .col-md-3
     h4 新着投稿
+    - @post.each do |post|
+      = link_to post.title, "#", { class: "d-block" }

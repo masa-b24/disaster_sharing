@@ -17,6 +17,10 @@
         .field
           = f.label :prefecture_id, "都道府県"
           br
-          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい'
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: current_user.prefecture_id
+        .field
+          = f.label :request_help, "お助け申請"
+          br
+          = f.check_box :request_help, {}, checked_value = "true", unchecked_value = "false"
         .actions
           = f.submit "投稿", class: "btn btn-success btn-block"
