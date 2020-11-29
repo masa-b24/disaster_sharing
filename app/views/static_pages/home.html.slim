@@ -9,8 +9,23 @@
       h6 = current_user.name
       = link_to 'マイページはこちら▶︎', "#"
   .col-md-6
-    h4 5日間で話題のtopic
-  .col-md-3
-    h4 新着投稿
-    - @post.each do |post|
-      = link_to post.title, "#", { class: "d-block" }
+    h4.text-center 5日間で話題のtopic
+  .col-md-3.new_post_wrap
+    h4.text-center 新着投稿
+    table.table
+      thead
+        tr
+          th 時間
+          th タイトル
+          th お助け申請
+      tbody
+        - @post.each do |post|
+          tr
+            td = l post.created_at, format: :time
+            td = link_to post.title.truncate(9), "#"
+            td
+              - if post.request_help == true
+                span 申請中
+              - else 
+                span いらん
+
