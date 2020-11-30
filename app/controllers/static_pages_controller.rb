@@ -3,6 +3,6 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    @post  = Post.all.sorted
+    @post = Post.all.sorted
   end
 end

@@ -8,16 +8,31 @@
       = link_to '投稿する', new_post_path, class: 'btn btn-primary'
       h6 = current_user.name
       = link_to 'マイページはこちら▶︎', "#"
-  .col-md-6
+  .col-md-6.recent_popular_post
     h4.text-center 5日間で話題のtopic
+    .row
+      - @post.each do |post|
+        .col-md-2.border_post
+          aside.avatarwrap.col-md-3
+            h6 画像
+
+        .col-md-10.border_post
+          .postwrap
+            .titlewrap.d-block
+              = post.title
+              = l post.created_at, format: :short
+            .contentwrap
+              = post.content
+            .imageswrap
+              - if post.images.attached?
+                - post.images.each do |image|
+                  = image_tag image.variant(resize_to_fill: [150, 150])
+            
+
+
   .col-md-3.new_post_wrap
     h4.text-center 新着投稿
     table.table
-      thead
-        tr
-          th 時間
-          th タイトル
-          th お助け申請
       tbody
         - @post.each do |post|
           tr

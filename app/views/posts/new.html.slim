@@ -19,6 +19,10 @@
           br
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: current_user.prefecture_id
         .field
+          = f.label :images
+          br
+          = f.file_field :images, multiple: true
+        .field
           = f.label :request_help, "お助け申請"
           br
           = f.check_box :request_help, {}, checked_value = "true", unchecked_value = "false"
