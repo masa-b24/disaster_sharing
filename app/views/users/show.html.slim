@@ -1,0 +1,50 @@
+.auth_title
+  section
+    h2
+      | マイページ
+.row
+  aside.col-md-3
+    section.user_info
+      = link_to '投稿する', new_post_path, class: 'btn btn-primary'
+      h6 = current_user.name
+      = link_to 'プロフィールの変更▶︎', "#"
+  .col-md-9
+    h4 今月のあなたの投稿
+    .row
+      - @post.current_month.each do |post|
+        .col-md-2.border_post
+          aside.avatarwrap.col-md-3
+            h6 画像
+        .col-md-10.border_post
+          .postwrap
+            .titlewrap.d-block
+              = post.title
+              = l post.created_at, format: :short
+              = link_to "詳細", post_path(post)
+              = link_to "削除", post_path(post), method: :delete, data: { confirm: "投稿「#{post.title}」を削除します。よろしいですか？" }
+            .contentwrap
+              = post.content
+            .imageswrap
+              - if post.images.attached?
+                - post.images.each do |image|
+                  = image_tag image.variant(resize_to_fill: [150, 150])
+    h4 先月以降のあなたの投稿
+    .row
+      - @post.last_month.each do |post|
+        .col-md-2.border_post
+          aside.avatarwrap.col-md-3
+            h6 画像
+
+        .col-md-10.border_post
+          .postwrap
+            .titlewrap.d-block
+              = post.title
+              = l post.created_at, format: :short
+              = link_to "詳細", post_path(post)
+              = link_to "削除", post_path(post), method: :delete, data: { confirm: "投稿「#{post.title}」を削除します。よろしいですか？" }
+            .contentwrap
+              = post.content
+            .imageswrap
+              - if post.images.attached?
+                - post.images.each do |image|
+                  = image_tag image.variant(resize_to_fill: [150, 150])

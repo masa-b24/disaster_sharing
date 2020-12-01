@@ -7,7 +7,7 @@
     section.user_info
       = link_to '投稿する', new_post_path, class: 'btn btn-primary'
       h6 = current_user.name
-      = link_to 'マイページはこちら▶︎', "#"
+      = link_to 'マイページはこちら▶︎', users_path
   .col-md-6.recent_popular_post
     h4.text-center 5日間で話題のtopic
     .row

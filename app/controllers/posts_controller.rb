@@ -18,6 +18,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to users_path, notice: "タスク「#{post.title}」を削除しました。"
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :content, :prefecture_id, :request_help, images: []) 
