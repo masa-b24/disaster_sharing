@@ -5,16 +5,23 @@
 .row
   aside.col-md-3
     section.user_info
+      - if current_user.avatar.attached?
+        = image_tag current_user.avatar, class: "trim-image-to-circle-l"
+      - else
+        = image_tag 'default.png', class: "trim-image-to-circle-l"
       = link_to '投稿する', new_post_path, class: 'btn btn-primary'
       h6 = current_user.name
-      = link_to 'プロフィールの変更▶︎', "#"
+      = link_to 'プロフィールの変更▶︎', edit_users_path
   .col-md-9
     h4 今月のあなたの投稿
     .row
       - @post.current_month.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
-            h6 画像
+            - if current_user.avatar.attached?
+              = image_tag current_user.avatar, class: "trim-image-to-circle-s"
+            - else
+              = image_tag 'default.png', class: "trim-image-to-circle-s"
         .col-md-10.border_post
           .postwrap
             .titlewrap.d-block
@@ -33,7 +40,10 @@
       - @post.last_month.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
-            h6 画像
+            - if current_user.avatar.attached?
+              = image_tag current_user.avatar, class: "trim-image-to-circle-s"
+            - else
+              = image_tag 'default.png', class: "trim-image-to-circle^s"
 
         .col-md-10.border_post
           .postwrap

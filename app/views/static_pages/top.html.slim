@@ -1,11 +1,37 @@
-.headerWrap.row
-  .col-md-1
-  .headersummaryWrap.col-md-6
-    .headersummary
-      h1 ニッチ化災害SNS
-      h6 エリアやタグを選択して、あなたの地域情報をチェックしよう。
-      = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
-      = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary' 
-  .headerPicture.aside.col-md-4
-    = image_tag '日本地図.png'
-.featured-topicWrap
+.headerWrap
+  .row
+    .col-md-1
+    .headersummaryWrap.col-md-6
+      .headersummary
+        h1 ニッチ化災害SNS
+        h6 エリアやタグを選択して、あなたの地域情報をチェックしよう。
+        = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
+        = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary' 
+    .headerPicture.aside.col-md-4
+      = image_tag '日本地図.png'
+.mainWrap
+  .row
+    .featured-topicWrap.col-md-9
+      h6 全国で注目のtopic
+      = link_to "さらに表示▶︎", "#"
+    .aside-Wrap.col-md-3
+      .popularTagWrap
+        h6 話題のタグで検索
+      .linkWrap
+        h6 リンク
+        = link_to "ランクについて", "#", class: "d-block"
+        = link_to "災害小ネタ(特集)", "#", class: "d-block"
+        = link_to "お問い合わせ", "#", class: "d-block"
+        = link_to "利用規約", "#", class: "d-block"
+        = link_to "アプリを作った経緯", "#", class: "d-block"
+        = link_to "登録情報の変更", edit_user_registration_path, class: "d-block"
+        = link_to "退会する", "#", class: "d-block"
+      .smallstoryWrap
+        h6 災害小ネタ(特集)
+        = link_to "地震があって閉じ込められたら?", "#", class: "d-block"
+        = link_to "災害時必須アイテム", "#", class: "d-block"
+        = link_to "災害時必須アイテム", "#", class: "d-block"
+        = link_to "災害時必須アイテム", "#", class: "d-block"
+        = link_to "特集一覧へ▶︎", "#", class: "d-block"
+
+
