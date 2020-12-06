@@ -11,11 +11,11 @@
         = image_tag 'default.png', class: "trim-image-to-circle-l"
       = link_to '投稿する', new_post_path, class: 'btn btn-primary'
       h6 = current_user.name
-      = link_to 'プロフィールの変更▶︎', edit_users_path
+      = link_to 'プロフィールの変更▶︎', profiles_path
   .col-md-9
     h4 今月のあなたの投稿
     .row
-      - @post.current_month.each do |post|
+      - @post.current_month.sorted.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
             - if current_user.avatar.attached?
@@ -37,7 +37,7 @@
                   = image_tag image.variant(resize_to_fill: [150, 150])
     h4 先月以前のあなたの投稿
     .row
-      - @post.last_month.each do |post|
+      - @post.last_month.sorted.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
             - if current_user.avatar.attached?
