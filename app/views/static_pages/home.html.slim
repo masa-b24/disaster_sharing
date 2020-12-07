@@ -33,7 +33,15 @@
               - if post.images.attached?
                 - post.images.each do |image|
                   = image_tag image.variant(resize_to_fill: [150, 150])
-            
+            .sub-informationWrap
+              small コメント：
+              small 参考になった：
+              small タグ：
+              - if post.tags.present?
+                - post.tags.each do |tag|
+                  = link_to tag.name, "#"
+              - else
+                span タグはありません
 
 
   .col-md-3.new_post_wrap

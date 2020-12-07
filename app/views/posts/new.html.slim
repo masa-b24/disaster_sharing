@@ -23,6 +23,10 @@
           br
           = f.file_field :images, multiple: true
         .field
+          = f.label :tag_list
+          br
+          = f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control"
+        .field
           = f.label :request_help, "お助け申請"
           br
           = f.check_box :request_help, {}, checked_value = "true", unchecked_value = "false"

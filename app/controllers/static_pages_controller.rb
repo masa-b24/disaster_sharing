@@ -4,5 +4,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @post = Post.all.sorted
+    # @tags = @post.tag_counts_on(:tags)
   end
 end
