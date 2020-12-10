@@ -5,8 +5,12 @@
       .headersummary
         h1 ニッチ化災害SNS
         h6 エリアやタグを選択して、あなたの地域情報をチェックしよう。
-        = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
-        = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary' 
+        - if user_signed_in?
+          = link_to "ホーム", home_path, class: 'btn btn-primary'
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+        -else
+          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
+          = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary' 
     .headerPicture.aside.col-md-4
       = image_pack_tag '日本地図.png'
 .mainWrap
