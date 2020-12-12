@@ -19,10 +19,10 @@
           .field
             = f.check_box :remember_me
             = f.label :remember_me
-        .actions
-          = f.submit "ログイン", class: "btn btn-primary btn-block"
+        .action.d-grid.gap-2
+          = f.submit "ログイン", class: "btn btn-primary"
 
     .divider
       h6.line 初めての方はこちら
-
-    = render "devise/shared/links"
+    .d-grid.gap-2
+      = render "devise/shared/links"

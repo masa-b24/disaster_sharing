@@ -5,7 +5,7 @@
 .row
   .col-md-6.offset-md-3
     .auth_form
-      = form_with model: current_user, url: users_path, local: true do |f|
+      = form_with model: current_user, url: profiles_path, local: true do |f|
         .field
           = f.label :avatar
           br

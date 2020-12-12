@@ -26,6 +26,6 @@ class Users::SessionsController < Devise::SessionsController
   #end
 
   def after_sign_in_path_for(resource)
-    home_path
+    home_path(prefecture_id: current_user.prefecture_id)
   end 
 end

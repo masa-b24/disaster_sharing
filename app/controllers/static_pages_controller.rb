@@ -2,15 +2,10 @@ class StaticPagesController < ApplicationController
   def top
   end
 
-  def home
-    if params[:search]
-      @post = Post.where('content LIKE ?', "%#{params[:search]}%").sorted
-    elsif params[:tag]
-      @post = Post.tagged_with(params[:tag]).sorted
-    else
-      @post = Post.all.sorted
-    # @tags = @post.tag_counts_on(:tags)
-    end 
+  def home  
+    @posts = Post.sorted
+    @posts = @posts.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present? 
+    @posts = @posts.where('title LIKE :keyword OR content LIKE :keyword', keyword: "%#{params[:keyword]}%") if params[:keyword].present?
+    @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
   end
-
 end

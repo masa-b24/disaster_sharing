@@ -1,39 +1,43 @@
 .auth_title
   section
-    h2
-      | #{current_user.prefecture.name}の災害情報
+    - if params[:prefecture_id].present?
+      p #{@posts.first.prefecture.name}の災害情報
+    - else 
+      p 全国の災害情報
 .row
   aside.col-md-3
     section.user_info
       - if current_user.avatar.attached?
         = image_tag current_user.avatar, class: "trim-image-to-circle-l"
       - else
-        = image_tag 'default.png', class: "trim-image-to-circle-l"
-      = link_to '投稿する', new_post_path, class: 'btn btn-primary'
+        = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
       h6 = current_user.name
-      = link_to 'マイページはこちら▶︎', users_path
+      = link_to 'マイページはこちら▶︎', users_path, class: 'd-block'
+      = link_to '投稿する', new_post_path, class: 'btn btn-primary btn-lg'
 
-    section.search-functionWrap
+    .search-functionWrap
       h6 簡易絞り込み検索
       = form_with url: home_path, method: :get, local: true do |f| 
         .form-group
-          = f.label :search, "検索文字"
-          = f.text_field :search, class: "form-control"
+          = f.label :keyword, "検索文字"
+          = f.text_field :keyword, class: "form-control"
         .form-group
-          = f.label :tag_list
-          = f.text_field :tag_list, class: "form-control"
-        = f.submit 'Search'
+          = f.label :tag, "タグ"
+          = f.text_field :tag, class: "form-control"
+        = f.submit '検索', class: 'btn btn-primary btn-block'
+      = link_to '詳細な検索▶︎', root_path, class: 'd-block'
+
 
   .col-md-6.recent_popular_post
     h4.text-center 5日間で話題のtopic
     .row
-      - @post.each do |post|
+      - @posts.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
             - if current_user.avatar.attached?
               = image_tag current_user.avatar, class: "trim-image-to-circle-s"
             - else
-              = image_tag 'default.png', class: "trim-image-to-circle-s"
+              = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
         .col-md-10.border_post
           .postwrap
             .titlewrap.d-block
@@ -54,13 +58,11 @@
                   = link_to tag, home_path(tag: tag.name)
               - else
                 span タグはありません
-
-
   .col-md-3.new_post_wrap
     h4.text-center 新着投稿
     table.table
       tbody
-        - @post.each do |post|
+        - @posts.each do |post|
           tr
             td = l post.created_at, format: :time
             td = link_to post.title.truncate(9), "#"
