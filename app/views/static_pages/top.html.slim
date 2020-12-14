@@ -18,10 +18,10 @@
     .quick-searchWrap
       h5 クイック検索
       = form_with url: home_path, method: :get, local: true do |f| 
-        .form-group
+        .form-inline
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "県を選択してください" }, {class: "form-box"}
-          = f.text_field :keyword, placeholder: "キーワード入力" 
-          = f.text_field :tag, placeholder: "タグ[例:地震、台風、火事]" 
+          = f.text_field :keyword, placeholder: "キーワード入力" , class: "form-size"
+          = f.text_field :tag, placeholder: "タグ[例:地震、台風、火事]", class: "form-size"
           = f.submit '検索', class: 'btn btn-primary' 
 
     .col-md-9
@@ -101,25 +101,17 @@
               dd = link_to "沖縄", home_path(prefecture_id: 47), class: "btn btn-outline-dark"
       .search-parameters-tag
         h5.tagSelectTitle タグで検索(複数選択可)
-        .search-functionWrap
-          span タグを入力する 
-          = form_with url: home_path, method: :get, local: true do |f| 
-            .form-group
-              = f.text_field :tag, class: "form-control"
-            = f.submit '検索', class: 'btn btn-primary btn-block'
+        .tag-Wrap
           .tag-group
             = link_to (image_pack_tag '地震.png', class: "trim-image-to-circle-l"), home_path(tag: "地震") 
             p 地震
             = link_to "津波", home_path(tag: "津波"), class: "btn btn-primary"
             = link_to "倒壊", home_path(tag: "倒壊"), class: "btn btn-primary"
-
-
           .tag-group
             = link_to (image_pack_tag '火事.png', class: "trim-image-to-circle-l"), home_path(tag: "火事") 
             p 火事
             = link_to "煙", home_path(tag: "煙"), class: "btn btn-primary"
             = link_to "地区", home_path(tag: "地区"), class: "btn btn-primary"
-
           .tag-group
             = link_to (image_pack_tag '台風.png', class: "trim-image-to-circle-l"), home_path(tag: "台風") 
             p 台風

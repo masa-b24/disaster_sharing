@@ -106,7 +106,7 @@ section {
 }
 
 /* topページ */
-input[type="text"] {
+input.form-size[type="text"] {
   width: 300px;
   height: 40px;
 }
@@ -117,8 +117,8 @@ input[type="text"] {
 }
 
 .quick-searchWrap {
-  background-color: white;
-  width: 100%;
+  background-color: rgb(247, 247, 247);
+  width: 100vw;
   height: 100px;
 }
 
@@ -153,4 +153,25 @@ dl {
   float: left;
   width: 20%;
   text-align: center;
+}
+
+/* homeページ */
+.text-range {
+  width: 100px;
+  height: 100px;
+}
+
+.home_backgroud_color {
+  background-color: rgb(255, 255, 255) !important;
+  border-color: rgb(255, 255, 255) !important;
+}
+
+.new_backgroud_color {
+  background-color: rgb(196, 226, 255) !important;
+  border-color: rgb(196, 226, 255) !important;
+}
+
+.request_backgroud_color {
+  background-color: rgb(187, 188, 255) !important;
+  border-color: rgb(187, 188, 255) !important;
 }

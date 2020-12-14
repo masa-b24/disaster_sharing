@@ -31,10 +31,10 @@
 
   .col-md-9.recent_popular_post
     ul.nav.nav-tabs.nav-justified#myTab role="tablist"
-      li.nav-item = link_to "みんなが見ているtopic", home_path(prefecture_id: params[:prefecture_id]), class: "nav-link home_backgroud_color active"
+      li.nav-item = link_to "みんなが見ているtopic", home_path(prefecture_id: params[:prefecture_id]), class: "nav-link home_backgroud_color"
       li.nav-item = link_to "新着投稿", home_new_path(prefecture_id: params[:prefecture_id]), class: "nav-link new_backgroud_color"
-      li.nav-item = link_to "お助け申請", home_request_path(prefecture_id: params[:prefecture_id]), class: "nav-link request_backgroud_color"
-    .row.home_backgroud_color
+      li.nav-item = link_to "お助け申請", home_request_path(prefecture_id: params[:prefecture_id]), class: "nav-link request_backgroud_color active"
+    .row.request_backgroud_color
       - @posts.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
