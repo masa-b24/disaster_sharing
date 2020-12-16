@@ -1,7 +1,7 @@
 .auth_title
   section
     - if params[:prefecture_id].present?
-      p #{@posts.first.prefecture.name}の災害情報
+      p #{@prefecture.name}の災害情報
     - else 
       p 全国の災害情報
 .row
@@ -28,7 +28,6 @@
           = f.submit '検索', class: 'btn btn-primary'
       = link_to '詳細な検索▶︎', root_path, class: 'd-block'
 
-
   .col-md-9.recent_popular_post
     ul.nav.nav-tabs.nav-justified#myTab role="tablist"
       li.nav-item = link_to "みんなが見ているtopic", home_path(prefecture_id: params[:prefecture_id]), class: "nav-link home_backgroud_color"
@@ -38,14 +37,14 @@
       - @posts.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
-            - if current_user.avatar.attached?
-              = image_tag current_user.avatar, class: "trim-image-to-circle-s"
+            - if post.user.avatar.attached?
+              = image_tag post.user.avatar, class: "trim-image-to-circle-s"
             - else
               = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
         .col-md-10.border_post
           .postwrap
             .titlewrap.d-block
-              = link_to post.title, "#"
+              = link_to post.title, post_path(post)
               = l post.created_at, format: :short
             .contentwrap
               = post.content

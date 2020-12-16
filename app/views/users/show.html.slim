@@ -5,15 +5,16 @@
 .row
   aside.col-md-3
     section.user_info
-      - if current_user.avatar.attached?
-        = image_tag current_user.avatar, class: "trim-image-to-circle-l"
-      - else
-        = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
-      = link_to '投稿する', new_post_path, class: 'btn btn-primary'
-      h6 = current_user.name
-      = link_to 'プロフィールの変更▶︎', profiles_path
-  .col-md-9
-    h4 今月のあなたの投稿
+      - if user_signed_in? && current_user.id.to_s == params[:id]
+        - if current_user.avatar.attached?
+          = image_tag current_user.avatar, class: "trim-image-to-circle-l"
+        - else
+          = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
+        h6 = current_user.name
+        = link_to 'プロフィールの変更▶︎', profiles_path, class: 'd-block'
+        = link_to '投稿する', new_post_path, class: 'btn btn-primary btn-lg'
+  .col-md-9.recent_popular_post
+    h4 今月の投稿
     .row
       - @post.current_month.sorted.each do |post|
         .col-md-2.border_post
@@ -25,9 +26,8 @@
         .col-md-10.border_post
           .postwrap
             .titlewrap.d-block
-              = post.title
+              = link_to post.title, post_path(post)
               = l post.created_at, format: :short
-              = link_to "詳細", post_path(post)
               = link_to "削除", post_path(post), method: :delete, data: { confirm: "投稿「#{post.title}」を削除します。よろしいですか？" }
             .contentwrap
               = post.content
@@ -35,7 +35,7 @@
               - if post.images.attached?
                 - post.images.each do |image|
                   = image_tag image.variant(resize_to_fill: [150, 150])
-    h4 先月以前のあなたの投稿
+    h4 先月以前の投稿
     .row
       - @post.last_month.sorted.each do |post|
         .col-md-2.border_post
@@ -48,9 +48,8 @@
         .col-md-10.border_post
           .postwrap
             .titlewrap.d-block
-              = post.title
+              = link_to post.title, post_path(post)
               = l post.created_at, format: :short
-              = link_to "詳細", post_path(post)
               = link_to "削除", post_path(post), method: :delete, data: { confirm: "投稿「#{post.title}」を削除します。よろしいですか？" }
             .contentwrap
               = post.content
@@ -58,3 +57,13 @@
               - if post.images.attached?
                 - post.images.each do |image|
                   = image_tag image.variant(resize_to_fill: [150, 150])
+            .sub-informationWrap
+              small コメント：
+              small 参考になった：
+              small タグ：
+              - if post.tag_list.present?
+                - post.tags.each do |tag|
+                  = link_to tag, home_path(tag: tag.name)
+              - else
+                span タグはありません
+   

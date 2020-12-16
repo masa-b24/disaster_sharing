@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
     @posts = @posts.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present? 
     @posts = @posts.where('title LIKE :keyword OR content LIKE :keyword', keyword: "%#{params[:keyword]}%") if params[:keyword].present?
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+    @prefecture = Prefecture.find(params[:prefecture_id]) if params[:prefecture_id].present? 
   end
 
   def home_new
@@ -14,6 +15,7 @@ class StaticPagesController < ApplicationController
     @posts = @posts.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present? 
     @posts = @posts.where('title LIKE :keyword OR content LIKE :keyword', keyword: "%#{params[:keyword]}%") if params[:keyword].present?
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+    @prefecture = Prefecture.find(params[:prefecture_id]) if params[:prefecture_id].present? 
   end
 
   def home_request
@@ -21,5 +23,6 @@ class StaticPagesController < ApplicationController
     @posts = @posts.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present? 
     @posts = @posts.where('title LIKE :keyword OR content LIKE :keyword', keyword: "%#{params[:keyword]}%") if params[:keyword].present?
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+    @prefecture = Prefecture.find(params[:prefecture_id]) if params[:prefecture_id].present? 
   end
 end

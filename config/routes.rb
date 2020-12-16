@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/home_request', to: 'static_pages#home_request'
   resource :users
   resource :profiles
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create]
+  end
 
 end

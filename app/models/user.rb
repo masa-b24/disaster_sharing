@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   belongs_to :prefecture
   has_many  :posts
+  has_many :comments
   has_one_attached :avatar
 
   # Include default devise modules. Others available are:
