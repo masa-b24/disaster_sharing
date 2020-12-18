@@ -9,7 +9,7 @@
       - else
         = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
       h6 = current_user.name
-      = link_to 'マイページはこちら▶︎', users_path, class: 'd-block'
+      = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block'
 
   .col-md-9.recent_popular_post
     .main-postwrap
@@ -55,7 +55,7 @@
               .postwrap
                 .contentwrap
                   - if comment.user
-                    = link_to comment.user.name, users_path
+                    = link_to comment.user.name, user_path(comment.user.id)
                   = comment.comment_content
         .commentWrap
           h4 <コメントをする>

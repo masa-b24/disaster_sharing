@@ -1,18 +1,21 @@
 .auth_title
   section
-    h2
-      | マイページ
+    - if user_signed_in? && current_user.id.to_s == params[:id]
+      h2
+        | マイページ
+    - else
+      h2
+        | 他人ページ
 .row
   aside.col-md-3
     section.user_info
-      - if user_signed_in? && current_user.id.to_s == params[:id]
-        - if current_user.avatar.attached?
-          = image_tag current_user.avatar, class: "trim-image-to-circle-l"
-        - else
-          = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
-        h6 = current_user.name
-        = link_to 'プロフィールの変更▶︎', profiles_path, class: 'd-block'
-        = link_to '投稿する', new_post_path, class: 'btn btn-primary btn-lg'
+      - if current_user.avatar.attached?
+        = image_tag current_user.avatar, class: "trim-image-to-circle-l"
+      - else
+        = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
+      h6 = current_user.name
+      = link_to 'プロフィールの変更▶︎', profiles_path, class: 'd-block'
+      = link_to '投稿する', new_post_path, class: 'btn btn-primary btn-lg'
   .col-md-9.recent_popular_post
     h4 今月の投稿
     .row

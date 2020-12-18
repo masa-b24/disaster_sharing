@@ -12,7 +12,7 @@
       - else
         = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
       h6 = current_user.name
-      = link_to 'マイページはこちら▶︎', users_path, class: 'd-block'
+      = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block'
       = link_to '投稿する', new_post_path, class: 'btn btn-primary btn-lg'
 
     .search-functionWrap
@@ -54,8 +54,9 @@
                   = image_tag image.variant(resize_to_fill: [150, 150])
             .sub-informationWrap
               small コメント：
+              sapn #{post.comments.count}件
               small 参考になった：
-              small タグ：
+              small タグ： 
               - if post.tag_list.present?
                 - post.tags.each do |tag|
                   = link_to tag, home_path(tag: tag.name)
