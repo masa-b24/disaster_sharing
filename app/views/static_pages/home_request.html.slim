@@ -55,6 +55,7 @@
             .sub-informationWrap
               small コメント：
               small 参考になった：
+              = post.liked_users.count
               small タグ：
               - if post.tag_list.present?
                 - post.tags.each do |tag|

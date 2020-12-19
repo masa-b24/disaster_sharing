@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = @post.comments.build
+    @like = Like.new
   end
 
   def index

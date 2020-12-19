@@ -69,4 +69,34 @@
                   = link_to tag, home_path(tag: tag.name)
               - else
                 span タグはありません
-   
+    h3 いいねしている投稿
+    .row
+      - @user.liked_posts.each do |post|
+        .col-md-2.border_post
+          aside.avatarwrap.col-md-3
+            - if current_user.avatar.attached?
+              = image_tag current_user.avatar, class: "trim-image-to-circle-s"
+            - else
+              = image_tag 'default.png', class: "trim-image-to-circle^s"
+
+        .col-md-10.border_post
+          .postwrap
+            .titlewrap.d-block
+              = link_to post.title, post_path(post)
+              = l post.created_at, format: :short
+              = link_to "削除", post_path(post), method: :delete, data: { confirm: "投稿「#{post.title}」を削除します。よろしいですか？" }
+            .contentwrap
+              = post.content
+            .imageswrap
+              - if post.images.attached?
+                - post.images.each do |image|
+                  = image_tag image.variant(resize_to_fill: [150, 150])
+            .sub-informationWrap
+              small コメント：
+              small 参考になった：
+              small タグ：
+              - if post.tag_list.present?
+                - post.tags.each do |tag|
+                  = link_to tag, home_path(tag: tag.name)
+              - else
+                span タグはありません

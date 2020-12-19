@@ -34,6 +34,10 @@
             .sub-informationWrap
               small コメント：
               small 参考になった：
+              - if current_user.already_liked?(@post) 
+                = button_to 'いいねを取り消す', post_like_path(@post), method: :delete
+              - else
+                = button_to 'いいね', post_likes_path(@post)
               small タグ：
               - if @post.tag_list.present?
                 - @post.tags.each do |tag|
@@ -47,7 +51,7 @@
           - @comments.each do |comment|
             .col-md-2.border_post
               aside.avatarwrap.col-md-3
-                - if comment.user && comment.user.avatar.present?
+                - if comment.user && comment.user.avatar.attached?
                   = image_tag comment.user.avatar, class: "trim-image-to-circle-s"
                 - else
                   = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
@@ -56,6 +60,9 @@
                 .contentwrap
                   - if comment.user
                     = link_to comment.user.name, user_path(comment.user.id)
+                    = comment.id
+                  - else
+                    = comment.id
                   = comment.comment_content
         .commentWrap
           h4 <コメントをする>
