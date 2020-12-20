@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to users_path, notice: "タスク「#{post.title}」を削除しました。"
+    flash[:success] = "タスク「#{post.title}」を削除しました。"
+    redirect_back(fallback_location: root_path)
   end
 
   private

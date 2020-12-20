@@ -175,3 +175,20 @@ dl {
   background-color: rgb(187, 188, 255) !important;
   border-color: rgb(187, 188, 255) !important;
 }
+
+/* 投稿詳細ページ */
+.like-btn {
+  width: 10px;
+  height: 15px;
+  font-size: 25px;
+  color: #808080; 
+  margin-left: 5px;
+}
+
+.unlike-btn {
+  width: 10px;
+  height: 15px;
+  font-size: 25px;
+  color: #e54747;
+  margin-left: 5px;
+}

@@ -56,7 +56,14 @@
               small コメント：
               sapn #{post.comments.count}件
               small 参考になった：
-              = post.liked_users.count
+              - if current_user.already_liked?(post)
+                = link_to post_like_path(post, id: post.likes.ids), method: :delete do
+                  i class="fas fa-heart unlike-btn"
+                = post.liked_users.count
+              - else
+                = link_to post_likes_path(post), method: :post
+                  i class="far fa-heart like-btn"
+                = post.liked_users.count
               small タグ： 
               - if post.tag_list.present?
                 - post.tags.each do |tag|
