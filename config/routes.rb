@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/home', to: 'static_pages#home'
   get '/home_new', to: 'static_pages#home_new'
   get '/home_request', to: 'static_pages#home_request'
+  get '/guide', to: 'static_pages#guide'
   resource :users
   resources :users
   resource :profiles

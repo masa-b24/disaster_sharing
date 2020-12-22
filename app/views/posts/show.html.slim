@@ -64,14 +64,11 @@
                 .contentwrap
                   - if comment.user
                     = link_to comment.user.name, user_path(comment.user.id)
-                    = comment.id
-                  - else
-                    = comment.id
-                  = comment.comment_content
+                  = comment.content
         .commentWrap
           h4 <コメントをする>
           - if user_signed_in?
-            = form_with(model: [@post, @comment], local: true) do |f|
+            = form_with(model: [@post, Comment.new], url: post_comments_path(@post), local: true) do |f|
               .form-group
-                = f.text_area :comment_content, class: "form-control", rows: 5
+                = f.text_area :content, class: "form-control", rows: 5
               =f.submit 'コメントする', class: "btn-sm btn-primary"

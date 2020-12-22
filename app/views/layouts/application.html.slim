@@ -12,7 +12,7 @@ html
       .container
         = link_to "災害情報アプリ", root_path, class: "text-light"
         ul.nav
-          li.nav-item = link_to "ニッチ化災害SNSとは", "#", class: "text-light nav-link"
+          li.nav-item = link_to "ニッチ化災害SNSとは", guide_path, class: "text-light nav-link"
           - if user_signed_in?
             li.nav-item= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light nav-link"
           - else

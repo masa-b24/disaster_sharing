@@ -2,6 +2,9 @@ class StaticPagesController < ApplicationController
   def top
   end
 
+  def guide
+  end
+
   def home  
     @posts = Post.sorted
     @posts = @posts.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present? 
