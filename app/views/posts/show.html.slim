@@ -48,6 +48,8 @@
                   = link_to tag, home_path(tag: tag.name)
               - else
                 span タグはありません
+              small 閲覧数：
+              =  @post.impressionist_count
     .reply-postwrap
       .row.home_backgroud_color
         h4 <コメント一覧>

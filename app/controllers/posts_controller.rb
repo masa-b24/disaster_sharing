@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
+  
   def new
     @post = Post.new
   end
 
   def show
     @post = Post.find(params[:id])
+    impressionist(@post, nil, unique: [:session_hash])
     @comments = @post.comments
     @like = Like.new
   end

@@ -15,7 +15,7 @@
       = image_pack_tag '日本地図.png'
 .mainWrap
   .row
-    .quick-searchWrap
+    .quick-searchWrap.mb-5
       h5 クイック検索
       = form_with url: home_path, method: :get, local: true do |f| 
         .form-inline
@@ -23,9 +23,8 @@
           = f.text_field :keyword, placeholder: "キーワード入力" , class: "form-size"
           = f.text_field :tag, placeholder: "タグ[例:地震、台風、火事]", class: "form-size"
           = f.submit '検索', class: 'btn btn-primary' 
-
     .col-md-9
-      .search-parameters-area
+      .search-parameters-area.mb-5
         h5.areaSelectTitle エリアで検索
         ul.areaSelectList
           li
@@ -99,37 +98,106 @@
               dd = link_to "宮崎", home_path(prefecture_id: 45), class: "btn btn-outline-dark"
               dd = link_to "鹿児島", home_path(prefecture_id: 46), class: "btn btn-outline-dark"
               dd = link_to "沖縄", home_path(prefecture_id: 47), class: "btn btn-outline-dark"
-      .search-parameters-tag
+      .search-parameters-tag.mb-5
         h5.tagSelectTitle タグで検索(複数選択可)
         .tag-Wrap
-          .tag-group
+          .tag-group.d-inline-block
             = link_to (image_pack_tag '地震.png', class: "trim-image-to-circle-l"), home_path(tag: "地震") 
             p 地震
             = link_to "津波", home_path(tag: "津波"), class: "btn btn-primary"
             = link_to "倒壊", home_path(tag: "倒壊"), class: "btn btn-primary"
-          .tag-group
+          .tag-group.d-inline-block
             = link_to (image_pack_tag '火事.png', class: "trim-image-to-circle-l"), home_path(tag: "火事") 
             p 火事
             = link_to "煙", home_path(tag: "煙"), class: "btn btn-primary"
             = link_to "地区", home_path(tag: "地区"), class: "btn btn-primary"
-          .tag-group
+          .tag-group.d-inline-block
             = link_to (image_pack_tag '台風.png', class: "trim-image-to-circle-l"), home_path(tag: "台風") 
             p 台風
             = link_to "風速", home_path(tag: "風速"), class: "btn btn-primary"
             = link_to "暴風", home_path(tag: "暴風"), class: "btn btn-primary"
-          .tag-group
+          .tag-group.d-inline-block
             = link_to (image_pack_tag '豪雪・豪雨.png', class: "trim-image-to-circle-l"), home_path(tag: "豪雪・豪雨") 
             p 豪雪・豪雨
             = link_to "積雪", home_path(tag: "積雪"), class: "btn btn-primary"
             = link_to "凍結", home_path(tag: "凍結"), class: "btn btn-primary"
-          .tag-group
+          .tag-group.d-inline-block
             = link_to (image_pack_tag '事件.png', class: "trim-image-to-circle-l"), home_path(tag: "事件") 
             p 事件
             = link_to "殺人", home_path(tag: "殺人"), class: "btn btn-primary"
             = link_to "盗難", home_path(tag: "盗難"), class: "btn btn-primary"
       .featured-topicWrap
         h5 全国で注目のtopic
-        = link_to "さらに表示▶︎", "#"
+        #carouselExampleControls.carousel.slide data-ride="carousel"
+          .carousel-inner.font-small
+            .home_backgroud_color.m-3
+              .carousel-item.active
+                - @posts.first(1).each do |post|
+                  .row
+                    .col-md-1.offset-md-2
+                      aside.avatarwrap
+                        - if post.user.avatar.attached?
+                          = image_tag post.user.avatar, class: "trim-image-to-circle-s"
+                        - else
+                          = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+                    .col-md-8
+                      .postwrap
+                        .titlewrap.d-block
+                          = link_to post.title, post_path(post)
+                          = l post.created_at, format: :short
+                        .contentwrap
+                          = post.content
+                        .imageswrap
+                          - if post.images.attached?
+                            - post.images.each do |image|
+                              = image_tag image.variant(resize_to_fill: [150, 150])
+                        .sub-informationWrap
+                          small コメント：
+                          sapn #{post.comments.count}件
+                          small 参考になった：
+                          small タグ： 
+                          - if post.tag_list.present?
+                            - post.tags.each do |tag|
+                              = link_to tag, home_path(tag: tag.name)
+                          - else
+                            span タグはありません
+                          small 閲覧数：
+                          = post.impressionist_count
+              - @posts.drop(1).each do |post|
+                .carousel-item   
+                  .row    
+                    .col-md-1.offset-md-2
+                      aside.avatarwrap
+                        - if post.user.avatar.attached?
+                          = image_tag post.user.avatar, class: "trim-image-to-circle-s"
+                        - else
+                          = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+                    .col-md-8
+                      .postwrap
+                        .titlewrap.d-block
+                          = link_to post.title, post_path(post)
+                          = l post.created_at, format: :short
+                        .contentwrap
+                          = post.content
+                        .sub-informationWrap
+                          small コメント：
+                          sapn #{post.comments.count}件
+                          small 参考になった：
+                          small タグ： 
+                          - if post.tag_list.present?
+                            - post.tags.each do |tag|
+                              = link_to tag, home_path(tag: tag.name)
+                          - else
+                            span タグはありません
+                          small 閲覧数：
+                          = post.impressionist_count  
+          a.carousel-control-prev href="#carouselExampleControls" role="button" data-slide="prev"
+            span.carousel-control-prev-icon aria-hidden="true"
+            span.sr-only Previous
+          a.carousel-control-next href="#carouselExampleControls" role="button" data-slide="next"
+            span.carousel-control-next-icon aria-hidden="true"
+            span.sr-only Next
+      = link_to "さらに表示▶︎", "#"
 
     .aside-Wrap.col-md-3
       .popularTagWrap

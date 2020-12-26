@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def top
+    @posts = Post.order('impressions_count DESC').take(6)
   end
 
   def guide

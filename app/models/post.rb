@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
 
   acts_as_taggable
+  is_impressionable counter_cache: true
 
   scope :sorted, -> { order(created_at: :desc) }
   scope :current_month, -> { where(created_at: Time.current.beginning_of_month..Time.current.end_of_month) }
