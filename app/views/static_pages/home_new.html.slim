@@ -35,14 +35,13 @@
       li.nav-item = link_to "お助け申請", home_request_path(prefecture_id: params[:prefecture_id]), class: "nav-link request_backgroud_color"
     .row.new_backgroud_color
       - @posts.each do |post|
-        .col-md-2.border_post
-          aside.avatarwrap.col-md-3
-            - if post.user.avatar.attached?
-              = image_tag post.user.avatar, class: "trim-image-to-circle-s"
-            - else
-              = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
-        .col-md-10.border_post
-          .postwrap
+        .border_post.py-2
+          .avatarwrap.d-inline-block.align-top.mr-5
+              - if post.user.avatar.attached?
+                = image_tag post.user.avatar, class: "trim-image-to-circle-s "
+              - else
+                = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+          .postwrap.d-inline-block
             .titlewrap.d-block
               = link_to post.title, post_path(post)
               = l post.created_at, format: :short
