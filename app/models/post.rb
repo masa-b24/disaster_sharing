@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
+  # has_one :best_comment_id, class_name: "Comment"
 
   acts_as_taggable
   is_impressionable counter_cache: true

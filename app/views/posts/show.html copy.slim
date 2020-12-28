@@ -14,14 +14,14 @@
   .col-md-9.recent_popular_post
     .main-postwrap
       .row.home_backgroud_color
-        .col-md-10.border_post.py-3
-          .avatarwrap.d-inline-block.mr-5
-            .imageWrap.d-flex.align-items-center
-              - if @post.user.avatar.attached?
-                = image_tag @post.user.avatar, class: "trim-image-to-circle-s"
-              - else
-                = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
-          .postwrap.d-inline-block
+        .col-md-2.border_post
+          aside.avatarwrap.col-md-3
+            - if @post.user.avatar.attached?
+              = image_tag @post.user.avatar, class: "trim-image-to-circle-s"
+            - else
+              = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+        .col-md-10.border_post
+          .postwrap
             .titlewrap.d-block
               = link_to @post.title, post_path(@post)
               = l @post.created_at, format: :short
@@ -55,23 +55,24 @@
         h4 <コメント一覧>
         - if @comments
           - @comments.each do |comment|
-            .col-md-10.border_post.py-3 class="#{ "best-comment" if @post.best_comment_id == comment.id }"
-              .imageWrap.d-flex.align-items-center
-                .avatarwrap.d-inline-block.mr-5
-                  - if comment.user && comment.user.avatar.attached?
-                    = image_tag comment.user.avatar, class: "trim-image-to-circle-s"
-                  - else
-                    = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
-                .postwrap.d-inline-block
-                  .contentwrap
-                    - if comment.user
-                      = link_to comment.user.name, user_path(comment.user.id), class: "d-block"
-                    = comment.content
-            .col-md-2.d-flex.align-items-center
-                = form_with(model: @post, local: true, data: {confirm: "#{comment.user.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form|
-                  = form.hidden_field :best_comment_id, value: comment.id
-                  .actions
-                    = form.submit 'BA', class: "btn btn-secondary", disabled: @post.best_comment_id.present? 
+            .col-md-2.border_post
+              aside.avatarwrap.col-md-3
+                - if comment.user && comment.user.avatar.attached?
+                  = image_tag comment.user.avatar, class: "trim-image-to-circle-s"
+                - else
+                  = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+            .col-md-8.border_post
+              .postwrap
+                .contentwrap
+                  - if comment.user
+                    = link_to comment.user.name, user_path(comment.user.id), class: "d-block"
+                  = comment.content
+            .col-md-2.border_post
+                .ba-child.text-center
+                  = form_with(model: @post, local: true) do |form|
+                    = form.hidden_field :best_comment_id, value: comment.id
+                    .actions
+                      = form.submit 'BA'
         .commentWrap
           h4 <コメントをする>
           - if user_signed_in?
