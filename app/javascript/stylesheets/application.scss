@@ -131,7 +131,7 @@ ul {
   list-style: none;
 }
 
-dl {
+.ruralButtonWrap {
   height: 40px;
 }
 
@@ -294,4 +294,11 @@ dl {
 /* best_comment */
 .best-comment {
   background-color: rgb(255, 143, 143);
+}
+
+/* ranking-page */
+
+.ruralWrap {
+  height: 300px !important;
+  width: 50%;
 }
