@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_070444) do
+ActiveRecord::Schema.define(version: 2020_12_30_084544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,17 @@ ActiveRecord::Schema.define(version: 2020_12_28_070444) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "ranking_likes", force: :cascade do |t|
+    t.string "year_month"
+    t.bigint "prefecture_id", null: false
+    t.integer "user1_id"
+    t.integer "user2_id"
+    t.integer "user3_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prefecture_id"], name: "index_ranking_likes_on_prefecture_id"
+  end
+
   create_table "rankings", force: :cascade do |t|
     t.string "year_month"
     t.bigint "prefecture_id", null: false
@@ -165,6 +176,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_070444) do
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "prefectures"
   add_foreign_key "posts", "users"
+  add_foreign_key "ranking_likes", "prefectures"
   add_foreign_key "rankings", "prefectures"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "prefectures"
