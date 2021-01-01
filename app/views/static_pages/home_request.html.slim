@@ -51,23 +51,21 @@
               - if post.images.attached?
                 - post.images.each do |image|
                   = image_tag image.variant(resize_to_fill: [150, 150])
-            .sub-informationWrap
-              small コメント：
-              sapn #{post.comments.count}件
-              small 参考になった：
+            .sub-informationWrap.samll
+              sapn コメント:
+              sapn #{post.comments.count}件/
+              span 参考になった:
               - if current_user.already_liked?(post)
                 = link_to post_like_path(post, id: post.likes.ids), method: :delete do
                   i class="fas fa-heart unlike-btn"
-                = post.liked_users.count
+                span #{post.liked_users.count}人/
               - else
                 = link_to post_likes_path(post), method: :post
                   i class="far fa-heart like-btn"
-                = post.liked_users.count
-              small タグ：
+                span #{post.liked_users.count}人/
+              span タグ:
               - if post.tag_list.present?
                 - post.tags.each do |tag|
                   = link_to tag, home_path(tag: tag.name)
               - else
-                span タグはありません
-   
-
+                span なし

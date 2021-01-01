@@ -16,7 +16,6 @@ footer {
 /* header */
 .headersummary {
   margin-top: 100px;
-
 }
 
 /* universal */
@@ -204,7 +203,6 @@ ul {
   height: 15px;
   font-size: 25px;
   color: #808080; 
-  margin-left: 5px;
 }
 
 .unlike-btn {
@@ -212,7 +210,6 @@ ul {
   height: 15px;
   font-size: 25px;
   color: #e54747;
-  margin-left: 5px;
 }
 
 /* guideページ */
@@ -297,8 +294,24 @@ ul {
 }
 
 /* ranking-page */
-
 .ruralWrap {
-  height: 300px !important;
-  width: 50%;
+  height: 330px !important;
+}
+
+th.shortcell {
+  width: 100px;
+}
+
+th.normalcell {
+  width: 160px;
+}
+
+.ranking_like_backgroud_color {
+  background-color: rgb(245, 245, 245) !important;
+  border-color: rgb(245, 245, 245) !important;
+}
+
+.ranking_backgroud_color {
+  background-color: rgb(230, 230, 230) !important;
+  border-color: rgb(230, 230, 230) !important;
 }

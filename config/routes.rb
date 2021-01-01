@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/home_new', to: 'static_pages#home_new'
   get '/home_request', to: 'static_pages#home_request'
   get '/guide', to: 'static_pages#guide'
+  get '/ranking_like', to: 'static_pages#ranking_like'
   get '/ranking', to: 'static_pages#ranking'
   resource :users
   resources :users

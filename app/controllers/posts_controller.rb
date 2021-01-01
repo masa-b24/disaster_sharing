@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to home_path, notice: "タスク「#{@post.title}」を作成されました。"
+      redirect_to home_new_path(prefecture_id: @post.prefecture_id), notice: "タスク「#{@post.title}」を作成されました。"
     else
       render :new
     end

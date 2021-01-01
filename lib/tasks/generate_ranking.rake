@@ -50,5 +50,4 @@ namespace :generate_ranking do
       ranking.save
     end
   end
-
 end

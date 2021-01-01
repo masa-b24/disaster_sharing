@@ -30,8 +30,11 @@ class StaticPagesController < ApplicationController
     @prefecture = Prefecture.find(params[:prefecture_id]) if params[:prefecture_id].present? 
   end
 
+  def ranking_like
+    @ranking_likes = RankingLike.last(47)
+  end
+
   def ranking
-    @ranking_likes = RankingLike.order(created_at: :desc).limit(47)
-    @rasnkings = Ranking.order(created_at: :desc).limit(47)
+    @rankings = Ranking.last(47)
   end
 end

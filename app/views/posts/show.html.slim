@@ -22,7 +22,7 @@
               = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
           .postwrap.d-inline-block
             .titlewrap.d-block
-              = link_to @post.title, post_path(@post)
+              = @post.title
               = l @post.created_at, format: :short
             .contentwrap
               = @post.content
@@ -30,25 +30,26 @@
               - if @post.images.attached?
                 - @post.images.each do |image|
                   = image_tag image.variant(resize_to_fill: [150, 150])
-            .sub-informationWrap
-              small コメント：
-              small 参考になった：
+            .sub-informationWrap.small
+              span コメント:
+              sapn #{@post.comments.count}件/
+              span 参考になった:
               - if current_user.already_liked?(@post)
                 = link_to post_like_path(@post), method: :delete do
                   i class="fas fa-heart unlike-btn"
-                = @post.liked_users.count
+                span #{@post.liked_users.count}人/
               - else
                 = link_to post_likes_path(@post), method: :post
                   i class="far fa-heart like-btn"
-                = @post.liked_users.count
-              small タグ：
+                span #{@post.liked_users.count}人/
+              span タグ:
               - if @post.tag_list.present?
                 - @post.tags.each do |tag|
-                  = link_to tag, home_path(tag: tag.name)
+                  span #{tag}/
               - else
-                span タグはありません
-              small 閲覧数：
-              =  @post.impressionist_count
+                span なし
+              span 閲覧数:
+              span #{@post.impressionist_count}
     .reply-postwrap
       .row.home_backgroud_color
         h4 <コメント一覧>
