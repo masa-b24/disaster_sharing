@@ -1,25 +1,32 @@
 .auth_title
   section
-    h2 投稿詳細
+    h3 投稿詳細
 .row
   aside.col-md-3
     section.user_info
       - if current_user.avatar.attached?
-        = image_tag current_user.avatar, class: "trim-image-to-circle-l"
+        = link_to (image_tag current_user.avatar, class: "trim-image-to-circle-l"), user_path(current_user)
       - else
-        = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
+        = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-l"), user_path(current_user)
       h6 = current_user.name
       = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block'
-
+    .commentWrap
+      h6 コメントする
+      - if user_signed_in?
+        = form_with(model: [@post, Comment.new], url: post_comments_path(@post), local: true) do |f|
+          .form-group
+            = f.text_area :content, class: "form-control", rows: 5
+          =f.submit '投稿する', class: "btn-sm btn-primary"
   .col-md-9.recent_popular_post
-    .main-postwrap
-      .row.home_backgroud_color
-        .col-md-10.border_post.py-3
+    .main-postwrap.border_post
+      .row
+        h6.text-decoration-underline 投稿内容
+        .col-md-10.py-3
           .avatarwrap.d-inline-block.align-top.mr-5
             - if @post.user.avatar.attached?
-              = image_tag @post.user.avatar, class: "trim-image-to-circle-s"
+              = link_to (image_tag @post.user.avatar, class: "trim-image-to-circle-s"), user_path(@post.user)
             - else
-              = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+              = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-s"), user_path(@post.user)
           .postwrap.d-inline-block
             .titlewrap.d-block
               = @post.title
@@ -52,29 +59,24 @@
               span #{@post.impressionist_count}
     .reply-postwrap
       .row.home_backgroud_color
-        h4 <コメント一覧>
+        h6.text-decoration-underline コメント一覧
         - if @comments
           - @comments.each do |comment|
             .col-md-10.border_post.py-3 class="#{ "best-comment" if @post.best_comment_id == comment.id }"
               .avatarwrap.d-inline-block.align-top.mr-5
                 - if comment.user && comment.user.avatar.attached?
-                  = image_tag comment.user.avatar, class: "trim-image-to-circle-s"
+                  = link_to (image_tag comment.user.avatar, class: "trim-image-to-circle-s"), user_path(comment.user)
                 - else
-                  = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+                  = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-s"), user_path(comment.user)
               .postwrap.d-inline-block
                 .contentwrap
                   - if comment.user
                     = link_to comment.user.name, user_path(comment.user.id), class: "d-block"
                   = comment.content
             .col-md-2.d-flex.align-items-center
-                = form_with(model: @post, local: true, data: {confirm: "#{comment.user.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form|
-                  = form.hidden_field :best_comment_id, value: comment.id
-                  .actions
-                    = form.submit 'BA', class: "btn btn-secondary", disabled: @post.best_comment_id.present? 
-        .commentWrap
-          h4 <コメントをする>
-          - if user_signed_in?
-            = form_with(model: [@post, Comment.new], url: post_comments_path(@post), local: true) do |f|
-              .form-group
-                = f.text_area :content, class: "form-control", rows: 5
-              =f.submit 'コメントする', class: "btn-sm btn-primary"
+              - if @post.user_id == current_user.id
+                - unless @post.user_id == comment.user_id
+                  = form_with(model: @post, local: true, data: {confirm: "#{comment.user.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form|
+                    = form.hidden_field :best_comment_id, value: comment.id
+                    .actions
+                      = form.submit 'ベストコメント', class: "btn btn-secondary", disabled: @post.best_comment_id.present? 

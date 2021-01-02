@@ -1,10 +1,10 @@
 .auth_title
   section
     - if user_signed_in? && current_user.id.to_s == params[:id]
-      h2
+      h3
         | マイページ
     - else
-      h2
+      h3
         | #{@user.name}さん
 .row
   aside.col-md-3
@@ -15,8 +15,8 @@
         = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
       h6 = @user.name
       - if user_signed_in? && current_user.id.to_s == params[:id]
-        = link_to 'プロフィールの変更▶︎', profiles_path, class: 'd-block'
         = link_to '投稿する', new_post_path, class: 'btn btn-primary d-grid gap-2'
+        = link_to 'プロフィールの変更▶︎', profiles_path, class: 'd-block small'
       
     .search-functionWrap
       h6 表示選択

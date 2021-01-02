@@ -1,10 +1,10 @@
 .auth_title
   section
     - if user_signed_in? && current_user.id.to_s == params[:id]
-      h2
+      h3
         | マイページ
     - else
-      h2
+      h3
         | 他人ページ
 .row
   aside.col-md-3

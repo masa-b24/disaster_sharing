@@ -196,13 +196,13 @@ input.form-size[type="text"] {
 }
 
 .new_backgroud_color {
-  background-color: rgb(196, 226, 255) !important;
-  border-color: rgb(196, 226, 255) !important;
+  background-color: rgb(235, 235, 235) !important;
+  border-color: rgb(235, 235, 235) !important;
 }
 
 .request_backgroud_color {
-  background-color: rgb(187, 188, 255) !important;
-  border-color: rgb(187, 188, 255) !important;
+  background-color: rgb(215, 215, 215) !important;
+  border-color: rgb(215, 215, 215) !important;
 }
 
 /* 投稿詳細ページ */
@@ -219,6 +219,15 @@ input.form-size[type="text"] {
   font-size: 25px;
   color: #e54747;
 }
+
+.commentWrap {
+  padding: 0 20px 0 60px;
+}
+
+.main-postwrap {
+  margin-bottom: 30px;
+}
+
 
 /* guideページ */
 .guide-headline {
