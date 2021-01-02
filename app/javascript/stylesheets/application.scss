@@ -103,9 +103,7 @@ section {
 /* 検索機能 */
 .search-functionWrap {
   background-color: white;
-  border-radius: 10px;
-  padding: 20px 30px;
-  margin-top: 30px;
+  padding: 0 60px;
 }
 
 /* topページ */
@@ -125,7 +123,7 @@ input.form-size[type="text"] {
   height: 100px;
 }
 
-ul {
+.search-parameters-area>ul {
   padding-inline-start: 0;
   list-style: none;
 }
@@ -157,8 +155,6 @@ ul {
 }
 
 .carousel-inner {
-  // border: 2px solid #b6b6b6;
-  // border-radius: 10px;
   height: 100px;
 }
 
@@ -175,12 +171,24 @@ ul {
   color: rgb(0, 0, 0);
 }
 
+.borderBottom {
+  border-bottom: solid 1px rgb(214, 214, 214);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
 /* homeページ */
 .text-range {
   width: 100px;
   height: 100px;
 }
 
+.user_info {
+  padding: 0 60px;
+  padding-bottom: 30px;
+  border-bottom: solid 1px rgb(214, 214, 214);
+  margin-bottom: 40px;
+}
 
 .home_backgroud_color {
   background-color: rgb(255, 255, 255) !important;

@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    home_path
+    home_path(prefecture_id: current_user.prefecture_id)
   end
 
   # The path used after sign up for inactive accounts.

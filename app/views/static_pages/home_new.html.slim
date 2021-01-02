@@ -13,7 +13,7 @@
         = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
       h6 = current_user.name
       = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block'
-      = link_to '投稿する', new_post_path, class: 'btn btn-primary btn-lg'
+      = link_to '投稿する', new_post_path, class: 'btn btn-primary d-grid gap-2'
 
     .search-functionWrap
       h6 簡易絞り込み検索
@@ -24,9 +24,8 @@
         .form-group
           = f.label :tag, "タグ"
           = f.text_field :tag, class: "form-control"
-        .d-grid.gap-2  
+        .d-grid.gap-2.mt-4  
           = f.submit '検索', class: 'btn btn-primary'
-      = link_to '詳細な検索▶︎', root_path, class: 'd-block'
 
   .col-md-9.recent_popular_post
     ul.nav.nav-tabs.nav-justified#myTab role="tablist"

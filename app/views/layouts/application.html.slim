@@ -17,7 +17,8 @@ html
         ul.nav
           li.nav-item = link_to "ニッチ化災害SNSとは", guide_path, class: "text-light nav-link"
           - if user_signed_in?
-            li.nav-item= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light nav-link"
+            li.nav-item = link_to "マイページ", user_path(current_user), class: "text-light nav-link"
+            li.nav-item = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light nav-link"
           - else
             li.nav-item = link_to "新規登録", new_user_registration_path, class: "text-light nav-link"
             li.nav-item = link_to "ログイン", new_user_session_path, class: "text-light nav-link"

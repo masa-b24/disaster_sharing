@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   get '/guide', to: 'static_pages#guide'
   get '/ranking_like', to: 'static_pages#ranking_like'
   get '/ranking', to: 'static_pages#ranking'
-  resource :users
   resources :users
+  get '/users/:id/last_month', to: 'users#last_month'
+  get '/users/:id/like', to: 'users#like'
   resource :profiles
   resources :posts do
     resources :comments, only: [:create]

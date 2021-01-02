@@ -6,7 +6,7 @@
         h1 ニッチ化災害SNS
         h6 エリアやタグを選択して、あなたの地域情報をチェックしよう。
         - if user_signed_in?
-          = link_to "ホーム", home_path, class: 'btn btn-primary'
+          = link_to "全国の情報", home_path, class: 'btn btn-primary'
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
         -else
           = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
@@ -200,23 +200,36 @@
       = link_to "さらに表示▶︎", "#"
 
     .aside-Wrap.col-md-3
-      .popularTagWrap
+      .popularTagWrap.borderBottom
         h6 話題のタグで検索
-      .linkWrap
+        ul
+          li  〇〇
+          li  〇〇
+          li  〇〇
+      .linkWrap.borderBottom
         h6 リンク
-        = link_to "ランクについて", ranking_like_path, class: "d-block"
-        = link_to "災害小ネタ(特集)", "#", class: "d-block"
-        = link_to "お問い合わせ", "#", class: "d-block"
-        = link_to "利用規約", "#", class: "d-block"
-        = link_to "アプリを作った経緯", "#", class: "d-block"
-        = link_to "登録情報の変更", edit_user_registration_path, class: "d-block"
-        = link_to "退会する", "#", class: "d-block"
-      .smallstoryWrap
-        h6 災害小ネタ(特集)
-        = link_to "地震があって閉じ込められたら?", "#", class: "d-block"
-        = link_to "災害時必須アイテム", "#", class: "d-block"
-        = link_to "災害時必須アイテム", "#", class: "d-block"
-        = link_to "災害時必須アイテム", "#", class: "d-block"
-        = link_to "特集一覧へ▶︎", "#", class: "d-block"
+        ul
+          li = link_to "ランクについて", ranking_like_path, class: "d-block"
+          li = link_to "災害小ネタ(特集)", "#", class: "d-block"
+          li = link_to "お問い合わせ", "#", class: "d-block"
+          li = link_to "利用規約", "#", class: "d-block"
+          li = link_to "アプリを作った経緯", "#", class: "d-block"
+          li = link_to "登録情報の変更", edit_user_registration_path, class: "d-block"
+          li = link_to "退会する", "#", class: "d-block"
+      .smallstoryWrap.borderBottom
+        h6  災害小ネタ(特集)
+        ul
+          li = link_to "地震で閉じ込められたら?(未開設)", "#", class: "d-block"
+          li = link_to "災害時必須アイテム(未開設)", "#", class: "d-block"
+          li = link_to "災害時必須アイテム(未開設)", "#", class: "d-block"
+          li = link_to "災害時必須アイテム(未開設)", "#", class: "d-block"
+          li = link_to "特集一覧へ▶︎(未開設)", "#", class: "d-block"
+      .rankingWrap.borderBottom
+        h6  今月のお役立ち君/お助け君
+        ul
+          li  〇〇
+          li  〇〇
+          li  〇〇
+
 
 
