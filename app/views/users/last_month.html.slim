@@ -58,3 +58,5 @@
                   = link_to tag, home_path(tag: tag.name)
               - else
                 span タグはありません
+      .paginationWrap          
+        = paginate @post

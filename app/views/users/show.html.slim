@@ -48,3 +48,5 @@
               - if post.images.attached?
                 - post.images.each do |image|
                   = image_tag image.variant(resize_to_fill: [150, 150])
+      .paginationWrap          
+        = paginate @post

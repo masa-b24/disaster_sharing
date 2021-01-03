@@ -29,7 +29,7 @@
   .col-md-9.recent_popular_post
     h5 いいねしている投稿
     .row
-      - @user.liked_posts.each do |post|
+      - @post.each do |post|
         .col-md-2.border_post
           aside.avatarwrap.col-md-3
             - if post.user.avatar.attached?
@@ -58,3 +58,5 @@
                   = link_to tag, home_path(tag: tag.name)
               - else
                 span タグはありません
+      .paginationWrap          
+        = paginate @post

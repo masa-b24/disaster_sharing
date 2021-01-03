@@ -80,3 +80,5 @@
                     = form.hidden_field :best_comment_id, value: comment.id
                     .actions
                       = form.submit 'ベストコメント', class: "btn btn-secondary", disabled: @post.best_comment_id.present? 
+          .paginationWrap          
+            = paginate @comments
