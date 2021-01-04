@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :name, presence: true
+
   belongs_to :prefecture
   has_many :posts
   has_many :likes, dependent: :destroy

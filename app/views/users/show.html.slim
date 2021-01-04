@@ -1,14 +1,13 @@
 .auth_title
-  section
-    - if user_signed_in? && current_user.id.to_s == params[:id]
-      h3
-        | マイページ
-    - else
-      h3
-        | #{@user.name}さん
+  - if user_signed_in? && current_user.id.to_s == params[:id]
+    h3
+      | マイページ
+  - else
+    h3
+      | #{@user.name}さん
 .row
   aside.col-md-3
-    section.user_info
+    .user_info
       - if @user.avatar.attached?
         = image_tag @user.avatar, class: "trim-image-to-circle-l"
       - else
@@ -16,7 +15,8 @@
       h6 = @user.name
       - if user_signed_in? && current_user.id.to_s == params[:id]
         = link_to '投稿する', new_post_path, class: 'btn btn-primary d-grid gap-2'
-        = link_to 'プロフィールの変更▶︎', profiles_path, class: 'd-block small'
+        = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block small'
+        = link_to 'プロフィールの編集▶︎', profiles_path, class: 'd-block small'
       
     .search-functionWrap
       h6 表示選択
@@ -31,7 +31,7 @@
     .row
       - @post.current_month.sorted.each do |post|
         .col-md-2.border_post
-          aside.avatarwrap.col-md-3
+          .avatarwrap.col-md-3
             - if post.user.avatar.attached?
               = image_tag post.user.avatar, class: "trim-image-to-circle-s"
             - else

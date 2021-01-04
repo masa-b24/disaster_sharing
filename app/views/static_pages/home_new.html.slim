@@ -1,31 +1,15 @@
 .auth_title
-  section
-    - if params[:prefecture_id].present?
-      p #{@prefecture.name}の災害情報
-    - else 
-      p 全国の災害情報
+  - if params[:prefecture_id].present?
+    h3 #{@prefecture.name}の災害情報
+  - else 
+    h3 全国の災害情報
 .row
   aside.col-md-3
-    section.user_info
-      - if current_user.avatar.attached?
-        = link_to (image_tag current_user.avatar, class: "trim-image-to-circle-l"), user_path(current_user)
-      - else
-        = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-l"), user_path(current_user)
-      h6 = current_user.name
-      = link_to '投稿する', new_post_path, class: 'btn btn-primary d-grid gap-2'
-      = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block small'
-      
+    .user_info
+      = render partial: "users/userinfo"
+
     .search-functionWrap
-      h6 簡易絞り込み検索
-      = form_with url: home_path, method: :get, local: true do |f| 
-        .form-group
-          = f.label :keyword, "検索文字"
-          = f.text_field :keyword, class: "form-control"
-        .form-group
-          = f.label :tag, "タグ"
-          = f.text_field :tag, class: "form-control"
-        .d-grid.gap-2.mt-4  
-          = f.submit '検索', class: 'btn btn-primary'
+      = render partial: "static_pages/search"
 
   .col-md-9.recent_popular_post
     ul.nav.nav-tabs.nav-justified#myTab role="tablist"
@@ -33,40 +17,6 @@
       li.nav-item = link_to "新着投稿", home_new_path(prefecture_id: params[:prefecture_id]), class: "nav-link new_backgroud_color active"
       li.nav-item = link_to "お助け申請", home_request_path(prefecture_id: params[:prefecture_id]), class: "nav-link request_backgroud_color"
     .row.new_backgroud_color
-      - @posts.each do |post|
-        .border_post.py-2
-          .avatarwrap.d-inline-block.align-top.mr-5
-              - if post.user.avatar.attached?
-                = link_to (image_tag post.user.avatar, class: "trim-image-to-circle-s"), user_path(post.user)
-              - else
-                = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-s"), user_path(post.user)
-          .postwrap.d-inline-block
-            .titlewrap.d-block
-              = link_to post.title, post_path(post)
-              = l post.created_at, format: :short
-            .contentwrap
-              = post.content
-            .imageswrap
-              - if post.images.attached?
-                - post.images.each do |image|
-                  = image_tag image.variant(resize_to_fill: [150, 150])
-            .sub-informationWrap.samll
-              sapn コメント:
-              sapn #{post.comments.count}件/
-              span 参考になった:
-              - if current_user.already_liked?(post)
-                = link_to post_like_path(post, id: post.likes.ids), method: :delete do
-                  i class="fas fa-heart unlike-btn"
-                span #{post.liked_users.count}人/
-              - else
-                = link_to post_likes_path(post), method: :post
-                  i class="far fa-heart like-btn"
-                span #{post.liked_users.count}人/
-              span タグ:
-              - if post.tag_list.present?
-                - post.tags.each do |tag|
-                  = link_to tag, home_path(tag: tag.name)
-              - else
-                span なし
-      .paginationWrap          
-        = paginate @posts
+      = render partial: "static_pages/post", locals: { posts: @posts }
+    .paginationWrap          
+      = paginate @posts

@@ -1,0 +1,35 @@
+- posts.each do |post|
+  .border_post.py-2
+    .avatarwrap.d-inline-block.align-top.mr-5
+        - if post.user.avatar.attached?
+          = link_to (image_tag post.user.avatar, class: "trim-image-to-circle-s"), user_path(post.user)
+        - else
+          = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-s"), user_path(post.user)
+    .postwrap.d-inline-block
+      .titlewrap.d-block
+        = link_to post.title, post_path(post)
+        = l post.created_at, format: :short
+      .contentwrap
+        = post.content
+      .imageswrap
+        - if post.images.attached?
+          - post.images.each do |image|
+            = image_tag image.variant(resize_to_fill: [150, 150])
+      .sub-informationWrap.samll
+        sapn コメント:
+        sapn #{post.comments.count}件/
+        span 参考になった:
+        - if current_user.already_liked?(post)
+          = link_to post_like_path(post, id: post.likes.ids), method: :delete do
+            i class="fas fa-heart unlike-btn"
+          span #{post.liked_users.count}人/
+        - else
+          = link_to post_likes_path(post), method: :post
+            i class="far fa-heart like-btn"
+          span #{post.liked_users.count}人/
+        span タグ:
+        - if post.tag_list.present?
+          - post.tags.each do |tag|
+            = link_to tag, home_path(tag: tag.name)
+        - else
+          span なし

@@ -6,27 +6,25 @@
   .col-md-6.offset-md-3
     .auth_form
       = form_with model: @post, local: true do |f|
-        .field
+        = render "shared/error_messages", object: f.object
+        .field.mb-3
           = f.label :title
-          br
           = f.text_field :title, class: "form-control"
-        .field
+        .field.mb-3
           = f.label :content
-          br
           = f.text_area :content, class: "form-control"
-        .field
+        .field.mb-3
           = f.label :prefecture_id, "都道府県"
           br
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: current_user.prefecture_id
-        .field
-          = f.label :images
+        .field.mb-3
+          = f.label :images, "画像"
           br
           = f.file_field :images, multiple: true
-        .field
-          = f.label :tag_list
-          br
+        .field.mb-3
+          = f.label :tag_list, "タグ"
           = f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control"
-        .field
+        .field.mb-3
           = f.label :request_help, "お助け申請"
           br
           = f.check_box :request_help, {}, checked_value = "true", unchecked_value = "false"

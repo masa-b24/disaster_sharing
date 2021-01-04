@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
    }
   
-  get '/mypage' => 'users#mypage'
   get 'profiles/show'
   get '/home', to: 'static_pages#home'
   get '/home_new', to: 'static_pages#home_new'

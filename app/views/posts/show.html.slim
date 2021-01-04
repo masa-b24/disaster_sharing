@@ -1,22 +1,17 @@
 .auth_title
-  section
-    h3 投稿詳細
+  h3 投稿詳細
 .row
   aside.col-md-3
-    section.user_info
-      - if current_user.avatar.attached?
-        = link_to (image_tag current_user.avatar, class: "trim-image-to-circle-l"), user_path(current_user)
-      - else
-        = link_to (image_pack_tag 'default.png', class: "trim-image-to-circle-l"), user_path(current_user)
-      h6 = current_user.name
-      = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block'
+    .user_info
+      = render partial: "users/userinfo"
     .commentWrap
       h6 コメントする
       - if user_signed_in?
         = form_with(model: [@post, Comment.new], url: post_comments_path(@post), local: true) do |f|
           .form-group
             = f.text_area :content, class: "form-control", rows: 5
-          =f.submit '投稿する', class: "btn-sm btn-primary"
+          .d-grid.gap-2.mt-4 
+            =f.submit 'コメントする', class: "btn btn-primary"
   .col-md-9.recent_popular_post
     .main-postwrap.border_post
       .row
@@ -76,9 +71,11 @@
             .col-md-2.d-flex.align-items-center
               - if @post.user_id == current_user.id
                 - unless @post.user_id == comment.user_id
-                  = form_with(model: @post, local: true, data: {confirm: "#{comment.user.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form|
-                    = form.hidden_field :best_comment_id, value: comment.id
-                    .actions
-                      = form.submit 'ベストコメント', class: "btn btn-secondary", disabled: @post.best_comment_id.present? 
-          .paginationWrap          
-            = paginate @comments
+                  - unless @post.best_comment_id.present? 
+                    = form_with(model: @post, local: true, data: {confirm: "#{comment.user.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form|
+                      = form.hidden_field :best_comment_id, value: comment.id
+                      .actions
+                        = form.submit 'BAにする', class: "btn btn-secondary", disabled: @post.best_comment_id.present? 
+                
+        .paginationWrap          
+          = paginate @comments

@@ -20,14 +20,11 @@ footer {
 
 /* universal */
 body {
-  // background-color: #E4E8EA !important;
+  background-color: rgb(247, 247, 247) !important;
 }
 
 .auth_title {
   margin-top: 30px;
-}
-
-section {
   text-align: center;
 }
 
@@ -107,7 +104,9 @@ section {
 /* 検索機能 */
 .search-functionWrap {
   background-color: white;
-  padding: 0 60px;
+  padding: 20px 30px;
+  margin: 0 30px;
+  border-radius: 10px;
 }
 
 /* topページ */
@@ -122,9 +121,7 @@ input.form-size[type="text"] {
 }
 
 .quick-searchWrap {
-  background-color: rgb(247, 247, 247);
-  width: 100vw;
-  height: 100px;
+  background-color: rgb(255, 255, 255);
 }
 
 .search-parameters-area>ul {
@@ -152,6 +149,12 @@ input.form-size[type="text"] {
   float: left;
   margin: 2px 0 0 16px;
 }
+
+.btn.btn-size {
+  width: 74px;
+}
+
+
 
 .tag-group {
   width: 20%;
@@ -192,11 +195,12 @@ input.form-size[type="text"] {
   padding-bottom: 30px;
   border-bottom: solid 1px rgb(214, 214, 214);
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .home_backgroud_color {
-  background-color: rgb(255, 255, 255) !important;
-  border-color: rgb(255, 255, 255) !important;
+  background-color: rgb(247, 247, 247) !important;
+  border-color: rgb(247, 247, 247) !important;
 }
 
 .new_backgroud_color {
@@ -225,7 +229,10 @@ input.form-size[type="text"] {
 }
 
 .commentWrap {
-  padding: 0 20px 0 60px;
+  background-color: white;
+  padding: 20px 30px;
+  margin: 0 30px;
+  border-radius: 10px;
 }
 
 .main-postwrap {
@@ -311,7 +318,7 @@ input.form-size[type="text"] {
 
 /* best_comment */
 .best-comment {
-  background-color: rgb(255, 143, 143);
+  background-color: rgb(255, 176, 86);
 }
 
 /* ranking-page */
