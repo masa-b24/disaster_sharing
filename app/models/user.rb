@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   validates :name, presence: true
+  validates :prefecture, presence: true
 
   belongs_to :prefecture
   has_many :posts
@@ -8,8 +9,6 @@ class User < ApplicationRecord
   has_many :comments
   has_one_attached :avatar
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          :lockable

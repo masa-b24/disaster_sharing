@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   def guide
   end
 
-  def home  
+  def home 
     @posts = Post.order('impressions_count DESC').page(params[:page]).per(20)
     @posts = @posts.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present? 
     @posts = @posts.where('title LIKE :keyword OR content LIKE :keyword', keyword: "%#{params[:keyword]}%") if params[:keyword].present?
