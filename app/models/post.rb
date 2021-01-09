@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many_attached :images
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :best_comment, foreign_key: :best_comment_id, class_name: 'Comment', optional: true 
   has_many :likes
   has_many :liked_users, through: :likes, source: :user

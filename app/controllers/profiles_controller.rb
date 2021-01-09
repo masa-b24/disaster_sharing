@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @post = current_user.posts
   end

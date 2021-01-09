@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :show, :create, :destroy]
   
   def new
     @post = Post.new
@@ -11,9 +12,6 @@ class PostsController < ApplicationController
     @like = Like.new
   end
 
-  def index
-  end
-
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
@@ -23,19 +21,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to @post, notice: 'BA was successfully updated.' 
-    else
-      render home_path
-    end
-  end
-
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
-    flash[:success] = "タスク「#{post.title}」を削除しました。"
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      @post.destroy
+    end
+    flash[:success] = "タスク「#{@post.title}」を削除しました。"
     redirect_back(fallback_location: root_path)
   end
 
