@@ -7,7 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    impressionist(@post, nil, unique: [:session_hash])
+    p @post
+    impressionist(@post, "some message", unique: [:session_hash])
     @comments = @post.comments.page(params[:page]).per(10)
     @like = Like.new
   end

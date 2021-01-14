@@ -35,20 +35,20 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "#show" do
-    context "as an authorized user" do
-      before do
-        @user = FactoryBot.create(:user)
-        @post = FactoryBot.create(:post, user: @user)
-      end
+  # describe "#show" do
+  #   context "as an authorized user" do
+  #     before do
+  #       @user = FactoryBot.create(:user)
+  #       @post = FactoryBot.create(:post, user: @user)
+  #     end
 
-      it "responds successfully" do
-        sign_in @user
-        get :show, params: { id: @post.id }
-        expect(response).to be_successful
-      end 
-    end
-  end
+  #     it "responds successfully" do
+  #       sign_in @user
+  #       get :show, params: { id: @post.id }
+  #       expect(response).to be_successful
+  #     end 
+  #   end
+  # end
 
   describe "#create" do
     context "as an authenticated user" do
@@ -58,7 +58,6 @@ RSpec.describe PostsController, type: :controller do
 
       context "with valid attributes" do
         it "adds a post" do
-          # post_params = FactoryBot.attributes_for(:post)
           post_params = FactoryBot.build(:post).attributes
           sign_in @user
           expect {
