@@ -1,0 +1,23 @@
+.auth_title
+  h3
+    | プロフィール画像の編集
+.row
+  .col-md-6.offset-md-3
+    .auth_form
+      = form_with model: current_user, url: profiles_path, local: true do |f|
+        .field
+          = f.label :avatar
+          br
+          = f.file_field :avatar
+        .actions
+          = f.submit "更新", class: "btn btn-success btn-block"
+
+
+      .divider
+      h6.line 以下、選択で変更できます
+
+      .avatar_colorWrap
+        h6 画像周りのカラー
+
+      .avatar_crownWrap
+        h6 画像周りの王冠

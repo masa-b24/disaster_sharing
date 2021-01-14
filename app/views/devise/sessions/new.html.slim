@@ -1,0 +1,30 @@
+.auth_title
+  h3
+    | ログイン
+
+.row
+  .col-md-6.offset-md-3
+    .auth_form
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        - if flash[:alert]
+          .alert.alert-danger
+            = flash[:alert]
+        .field.mb-3
+          = f.label :email
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+        .field.mb-3
+          = f.label :password
+          br
+          = f.password_field :password, autocomplete: "current-password", class: "form-control"
+        - if devise_mapping.rememberable?
+          .field.mb-3
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .action.d-grid.gap-2
+          = f.submit "ログイン", class: "btn btn-primary"
+
+    .divider
+      h6.line 初めての方はこちら
+    .d-grid.gap-2
+      = render "devise/shared/links"

@@ -1,0 +1,345 @@
+@import "bootstrap";
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid gray;
+  a {
+    color: gray;
+    &:hover {
+      color: #383838;
+    }
+  }
+}
+
+/* header */
+.headersummary {
+  margin-top: 100px;
+}
+
+/* universal */
+body {
+  background-color: rgb(247, 247, 247) !important;
+}
+
+.auth_title {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.auth_form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+  margin-top: 30px;
+  margin-bottom: 22px;
+}
+
+.recent_popular_post {
+  font-size: 0.8rem;
+  border-left: solid 1px rgb(214, 214, 214);
+}
+
+.border_post {
+  border-bottom: solid 1px rgb(214, 214, 214);
+}
+
+.new_post_wrap {
+  font-size: 0.8rem;
+  border-left: solid 1px rgb(214, 214, 214);
+}
+
+.font-small {
+  font-size: 0.9rem;
+}
+
+.paginationWrap nav {
+  margin-top: 10px;
+}
+
+/* 新規登録,ログインページ */
+.divider {
+  padding-top: 1px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+}
+
+.line::before, .line::after {
+  content: "";
+	flex-grow: 1;
+	height: 1px;
+	background: #444;
+	display: block;
+}
+
+.line::before {
+  margin-right: 2em;
+  background: linear-gradient(-90deg, #888, transparent);
+}
+
+.line::after {
+  margin-left: 2em;
+  background: linear-gradient(90deg, #888, transparent);
+}
+
+/* プロフィール画像 */
+.trim-image-to-circle-l{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.trim-image-to-circle-s{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+/* 検索機能 */
+.search-functionWrap {
+  background-color: white;
+  padding: 20px 30px;
+  margin: 0 30px;
+  border-radius: 10px;
+}
+
+/* topページ */
+input.form-size[type="text"] {
+  width: 300px;
+  height: 40px;
+}
+
+.form-box {
+  width: 300px;
+  height: 40px;
+}
+
+.quick-searchWrap {
+  background-color: rgb(255, 255, 255);
+}
+
+.search-parameters-area>ul {
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.ruralButtonWrap {
+  height: 40px;
+}
+
+.areaSelectList dt {
+  width: 115px;
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  background: #e0e0e0;
+  border-radius: 3px 0 0 3px;
+  text-align: center;
+  font-weight: bold;
+  color: #5373ff;
+}
+
+.areaSelectList dd {
+  float: left;
+  margin: 2px 0 0 16px;
+}
+
+.btn.btn-size {
+  width: 74px;
+}
+
+
+
+.tag-group {
+  width: 20%;
+  text-align: center;
+}
+
+.carousel-inner {
+  height: 100px;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+}
+
+.borderBottom {
+  border-bottom: solid 1px rgb(214, 214, 214);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+/* homeページ */
+.text-range {
+  width: 100px;
+  height: 100px;
+}
+
+.user_info {
+  padding: 0 60px;
+  padding-bottom: 30px;
+  border-bottom: solid 1px rgb(214, 214, 214);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.home_backgroud_color {
+  background-color: rgb(247, 247, 247) !important;
+  border-color: rgb(247, 247, 247) !important;
+}
+
+.new_backgroud_color {
+  background-color: rgb(235, 235, 235) !important;
+  border-color: rgb(235, 235, 235) !important;
+}
+
+.request_backgroud_color {
+  background-color: rgb(215, 215, 215) !important;
+  border-color: rgb(215, 215, 215) !important;
+}
+
+/* 投稿詳細ページ */
+.like-btn {
+  width: 10px;
+  height: 15px;
+  font-size: 25px;
+  color: #808080; 
+}
+
+.unlike-btn {
+  width: 10px;
+  height: 15px;
+  font-size: 25px;
+  color: #e54747;
+}
+
+.commentWrap {
+  background-color: white;
+  padding: 20px 30px;
+  margin: 0 30px;
+  border-radius: 10px;
+}
+
+.main-postwrap {
+  margin-bottom: 30px;
+}
+
+
+/* guideページ */
+.guide-headline {
+  background-image: url("../images/災害.jpg") ;
+  height: 700px;
+  background-size: cover;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-box {
+  color: white;
+  text-align: center;
+  padding-top: 350px;
+}
+
+.text-container {
+  padding: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.image-container {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.devide-half {
+  width: 50%;
+}
+
+.trim-image-to-circle-ll{
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+}
+
+.first-section {
+  background-color:white;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.third-section {
+  background-color:black;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+.guide-section-inner {
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.circle-flame {
+  width: 25%;
+  height: 300px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px 30px;
+  margin: 10px 30px 0 30px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.center {
+  text-align: center;
+}
+
+/* best_comment */
+.best-comment {
+  background-color: rgb(255, 176, 86);
+}
+
+/* ranking-page */
+.ruralWrap {
+  height: 330px !important;
+}
+
+th.shortcell {
+  width: 100px;
+}
+
+th.normalcell {
+  width: 160px;
+}
+
+.ranking_like_backgroud_color {
+  background-color: rgb(245, 245, 245) !important;
+  border-color: rgb(245, 245, 245) !important;
+}
+
+.ranking_backgroud_color {
+  background-color: rgb(230, 230, 230) !important;
+  border-color: rgb(230, 230, 230) !important;
+}

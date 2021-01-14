@@ -1,0 +1,63 @@
+.auth_title
+  - if user_signed_in? && current_user.id.to_s == params[:id]
+    h3
+      | マイページ
+  - else
+    h3
+      | #{@user.name}さん
+.row
+  aside.col-md-3
+    .user_info
+      - if @user.avatar.attached?
+        = image_tag @user.avatar, class: "trim-image-to-circle-l"
+      - else
+        = image_pack_tag 'default.png', class: "trim-image-to-circle-l"
+      h6 = @user.name
+      - if user_signed_in? && current_user.id.to_s == params[:id]
+        = link_to '投稿する', new_post_path, class: 'btn btn-primary d-grid gap-2'
+        = link_to 'マイページはこちら▶︎', user_path(current_user), class: 'd-block small'
+        = link_to 'プロフィールの編集▶︎', profiles_path, class: 'd-block small'
+      
+    .search-functionWrap
+      h6 表示選択
+      ul
+        li = link_to "今月の投稿", user_path(params[:id])
+        li = link_to "先月以前の投稿", controller: "users", action: "last_month"
+        li = link_to "いいねしている投稿", controller: "users", action: "like"
+
+      
+  .col-md-9.recent_popular_post
+    h5 いいねしている投稿
+    .row
+      - @post.each do |post|
+        .col-md-2.border_post
+          .avatarwrap.col-md-3
+            - if post.user.avatar.attached?
+              = image_tag post.user.avatar, class: "trim-image-to-circle-s"
+            - else
+              = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+
+        .col-md-10.border_post
+          .postwrap
+            .titlewrap.d-block
+              = link_to post.title, post_path(post)
+              = l post.created_at, format: :short
+              - if post.user_id == current_user.id
+                = link_to "削除", post_path(post), method: :delete, data: { confirm: "投稿「#{post.title}」を削除します。よろしいですか？" }
+            .contentwrap
+              = post.content
+            .imageswrap
+              - if post.images.attached?
+                - post.images.each do |image|
+                  = image_tag image.variant(resize_to_fill: [150, 150])
+            .sub-informationWrap
+              small コメント：
+              small 参考になった：
+              small タグ：
+              - if post.tag_list.present?
+                - post.tags.each do |tag|
+                  = link_to tag, home_path(tag: tag.name)
+              - else
+                span タグはありません
+      .paginationWrap          
+        = paginate @post

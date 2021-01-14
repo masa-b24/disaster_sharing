@@ -1,0 +1,35 @@
+.auth_title
+  - if params[:prefecture_id].present?
+    h3 #{@prefecture.name}の災害情報
+  - else 
+    h3 全国の災害情報
+.row
+  aside.col-md-3
+    .user_info
+      = render partial: "users/userinfo"
+
+    .search-functionWrap
+      h6 簡易絞り込み検索
+      = form_with url: home_new_path, method: :get, local: true do |f| 
+        .form-group
+          = f.label :keyword, "検索文字"
+          = f.text_field :keyword, class: "form-control"
+        .form-group
+          = f.label :tag, "タグ"
+          = f.text_field :tag, class: "form-control"
+        = f.hidden_field :prefecture_id, value: params[:prefecture_id]
+        .d-grid.gap-2.mt-4  
+          = f.submit '検索', class: 'btn btn-primary'
+
+  .col-md-9.recent_popular_post
+    ul.nav.nav-tabs.nav-justified#myTab role="tablist"
+      li.nav-item = link_to "みんなが見ているtopic", home_path(prefecture_id: params[:prefecture_id]), class: "nav-link home_backgroud_color"
+      li.nav-item = link_to "新着投稿", home_new_path(prefecture_id: params[:prefecture_id]), class: "nav-link new_backgroud_color active"
+      li.nav-item = link_to "お助け申請", home_request_path(prefecture_id: params[:prefecture_id]), class: "nav-link request_backgroud_color"
+    .row.new_backgroud_color
+      - if  user_signed_in?
+        = render partial: "static_pages/post", locals: { posts: @posts }
+      - else 
+        = render partial: "static_pages/post_unlogin", locals: { posts: @posts }
+    .paginationWrap          
+      = paginate @posts

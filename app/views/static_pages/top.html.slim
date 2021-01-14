@@ -1,0 +1,234 @@
+.headerWrap
+  .row
+    .col-md-1
+    .headersummaryWrap.col-md-6
+      .headersummary
+        h1 ニッチ化災害SNS
+        h6 エリアやタグを選択して、あなたの地域情報をチェックしよう。
+        - if user_signed_in?
+          = link_to "全国の情報", home_path, class: 'btn btn-primary'
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+        -else
+          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
+          = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary' 
+    .headerPicture.aside.col-md-4
+      = image_pack_tag '日本地図.png'
+.mainWrap
+  .row
+    .quick-searchWrap.mb-5.py-4
+      = form_with url: home_path, method: :get, local: true do |f| 
+        .form-inline.text-center
+          h5.d-inline クイック検索　
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "県を選択してください" }, {class: "form-box"}
+          = f.text_field :keyword, placeholder: "キーワード入力" , class: "form-size"
+          = f.text_field :tag, placeholder: "タグ[例:地震、台風、火事]", class: "form-size"
+          = f.submit '検索', class: 'btn btn-primary' 
+    .col-md-9
+      .search-parameters-area.mb-5
+        h5.areaSelectTitle.text-decoration-underline エリアで検索
+        ul.areaSelectList
+          li.ruralButtonWrap
+            dl
+              dt 北海道・東北
+              dd = link_to "北海道", home_path(prefecture_id: 1), class: "btn btn-outline-dark btn-size"
+              dd = link_to "青森", home_path(prefecture_id: 2), class: "btn btn-outline-dark btn-size"
+              dd = link_to "岩手", home_path(prefecture_id: 3), class: "btn btn-outline-dark btn-size"
+              dd = link_to "宮城", home_path(prefecture_id: 4), class: "btn btn-outline-dark btn-size"
+              dd = link_to "秋田", home_path(prefecture_id: 5), class: "btn btn-outline-dark btn-size"
+              dd = link_to "山形", home_path(prefecture_id: 6), class: "btn btn-outline-dark btn-size"
+              dd = link_to "福島", home_path(prefecture_id: 7), class: "btn btn-outline-dark btn-size"
+          li.ruralButtonWrap
+            dl
+              dt 関東
+              dd = link_to "茨城", home_path(prefecture_id: 8), class: "btn btn-outline-dark btn-size"
+              dd = link_to "栃木", home_path(prefecture_id: 9), class: "btn btn-outline-dark btn-size"
+              dd = link_to "群馬", home_path(prefecture_id: 10), class: "btn btn-outline-dark btn-size"
+              dd = link_to "埼玉", home_path(prefecture_id: 11), class: "btn btn-outline-dark btn-size"
+              dd = link_to "千葉", home_path(prefecture_id: 12), class: "btn btn-outline-dark btn-size"
+              dd = link_to "東京", home_path(prefecture_id: 13), class: "btn btn-outline-dark btn-size"
+              dd = link_to "神奈川", home_path(prefecture_id: 14), class: "btn btn-outline-dark btn-size"  
+          li.ruralButtonWrap
+            dl
+              dt 北陸・甲信越
+              dd = link_to "新潟", home_path(prefecture_id: 15), class: "btn btn-outline-dark btn-size"
+              dd = link_to "富山", home_path(prefecture_id: 16), class: "btn btn-outline-dark btn-size"
+              dd = link_to "石川", home_path(prefecture_id: 17), class: "btn btn-outline-dark btn-size" 
+              dd = link_to "福井", home_path(prefecture_id: 18), class: "btn btn-outline-dark btn-size"
+              dd = link_to "山梨", home_path(prefecture_id: 19), class: "btn btn-outline-dark btn-size"
+              dd = link_to "長野", home_path(prefecture_id: 20), class: "btn btn-outline-dark btn-size"
+          li.ruralButtonWrap
+            dl
+              dt 中部
+              dd = link_to "岐阜", home_path(prefecture_id: 21), class: "btn btn-outline-dark btn-size"
+              dd = link_to "静岡", home_path(prefecture_id: 22), class: "btn btn-outline-dark btn-size"
+              dd = link_to "愛知", home_path(prefecture_id: 23), class: "btn btn-outline-dark btn-size"
+              dd = link_to "三重", home_path(prefecture_id: 24), class: "btn btn-outline-dark btn-size"
+          li.ruralButtonWrap
+            dl
+              dt 関西
+              dd = link_to "滋賀", home_path(prefecture_id: 25), class: "btn btn-outline-dark btn-size"
+              dd = link_to "京都", home_path(prefecture_id: 26), class: "btn btn-outline-dark btn-size"
+              dd = link_to "大阪", home_path(prefecture_id: 27), class: "btn btn-outline-dark btn-size"
+              dd = link_to "兵庫", home_path(prefecture_id: 28), class: "btn btn-outline-dark btn-size"
+              dd = link_to "奈良", home_path(prefecture_id: 29), class: "btn btn-outline-dark btn-size"
+              dd = link_to "和歌山", home_path(prefecture_id: 30), class: "btn btn-outline-dark btn-size"
+          li.ruralButtonWrap
+            dl
+              dt 中国
+              dd = link_to "鳥取", home_path(prefecture_id: 31), class: "btn btn-outline-dark btn-size"
+              dd = link_to "島根", home_path(prefecture_id: 32), class: "btn btn-outline-dark btn-size"
+              dd = link_to "岡山", home_path(prefecture_id: 33), class: "btn btn-outline-dark btn-size"
+              dd = link_to "広島", home_path(prefecture_id: 34), class: "btn btn-outline-dark btn-size"
+              dd = link_to "山口", home_path(prefecture_id: 35), class: "btn btn-outline-dark btn-size"
+          li.ruralButtonWrap
+            dl
+              dt 四国
+              dd = link_to "徳島", home_path(prefecture_id: 36), class: "btn btn-outline-dark btn-size"
+              dd = link_to "香川", home_path(prefecture_id: 37), class: "btn btn-outline-dark btn-size" 
+              dd = link_to "愛媛", home_path(prefecture_id: 38), class: "btn btn-outline-dark btn-size"
+              dd = link_to "高知", home_path(prefecture_id: 39), class: "btn btn-outline-dark btn-size"
+          li.ruralButtonWrap
+            dl
+              dt 九州・沖縄
+              dd = link_to "福岡", home_path(prefecture_id: 40), class: "btn btn-outline-dark btn-size"
+              dd = link_to "佐賀", home_path(prefecture_id: 41), class: "btn btn-outline-dark btn-size"
+              dd = link_to "長崎", home_path(prefecture_id: 42), class: "btn btn-outline-dark btn-size"
+              dd = link_to "熊本", home_path(prefecture_id: 43), class: "btn btn-outline-dark btn-size"
+              dd = link_to "大分", home_path(prefecture_id: 44), class: "btn btn-outline-dark btn-size"
+              dd = link_to "宮崎", home_path(prefecture_id: 45), class: "btn btn-outline-dark btn-size"
+              dd = link_to "鹿児島", home_path(prefecture_id: 46), class: "btn btn-outline-dark btn-size"
+              dd = link_to "沖縄", home_path(prefecture_id: 47), class: "btn btn-outline-dark btn-size"
+      .search-parameters-tag.mb-5
+        h5.tagSelectTitle.text-decoration-underline タグで検索
+        .tag-Wrap
+          .tag-group.d-inline-block
+            = link_to (image_pack_tag '地震.png', class: "trim-image-to-circle-l"), home_path(tag: "地震") 
+            p 地震
+            = link_to "津波", home_path(tag: "津波"), class: "btn btn-primary"
+            = link_to "倒壊", home_path(tag: "倒壊"), class: "btn btn-primary"
+          .tag-group.d-inline-block
+            = link_to (image_pack_tag '火事.png', class: "trim-image-to-circle-l"), home_path(tag: "火事") 
+            p 火事
+            = link_to "煙", home_path(tag: "煙"), class: "btn btn-primary"
+            = link_to "地区", home_path(tag: "地区"), class: "btn btn-primary"
+          .tag-group.d-inline-block
+            = link_to (image_pack_tag '台風.png', class: "trim-image-to-circle-l"), home_path(tag: "台風") 
+            p 台風
+            = link_to "風速", home_path(tag: "風速"), class: "btn btn-primary"
+            = link_to "暴風", home_path(tag: "暴風"), class: "btn btn-primary"
+          .tag-group.d-inline-block
+            = link_to (image_pack_tag '豪雪・豪雨.png', class: "trim-image-to-circle-l"), home_path(tag: "豪雪・豪雨") 
+            p 豪雪・豪雨
+            = link_to "積雪", home_path(tag: "積雪"), class: "btn btn-primary"
+            = link_to "凍結", home_path(tag: "凍結"), class: "btn btn-primary"
+          .tag-group.d-inline-block
+            = link_to (image_pack_tag '事件.png', class: "trim-image-to-circle-l"), home_path(tag: "事件") 
+            p 事件
+            = link_to "殺人", home_path(tag: "殺人"), class: "btn btn-primary"
+            = link_to "盗難", home_path(tag: "盗難"), class: "btn btn-primary"
+      .featured-topicWrap.mb-5
+        h5.text-decoration-underline 全国で注目のtopic
+        #carouselExampleControls.carousel.slide data-ride="carousel"
+          .carousel-inner.font-small
+            .home_backgroud_color.m-3
+              .carousel-item.active
+                - @posts.first(1).each do |post|
+                  .row
+                    .col-md-1.offset-md-2
+                      aside.avatarwrap
+                        - if post.user.avatar.attached?
+                          = image_tag post.user.avatar, class: "trim-image-to-circle-s"
+                        - else
+                          = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+                    .col-md-8
+                      .postwrap
+                        .titlewrap.d-block
+                          = link_to post.title, post_path(post)
+                          = l post.created_at, format: :short
+                        .contentwrap
+                          = post.content
+                        .imageswrap
+                          - if post.images.attached?
+                            - post.images.each do |image|
+                              = image_tag image.variant(resize_to_fill: [150, 150])
+                        .sub-informationWrap
+                          small コメント：
+                          sapn #{post.comments.count}件
+                          small 参考になった：
+                          small タグ： 
+                          - if post.tag_list.present?
+                            - post.tags.each do |tag|
+                              = link_to tag, home_path(tag: tag.name)
+                          - else
+                            span タグはありません
+                          small 閲覧数：
+                          = post.impressionist_count
+              - @posts.drop(1).each do |post|
+                .carousel-item   
+                  .row    
+                    .col-md-1.offset-md-2
+                      aside.avatarwrap
+                        - if post.user.avatar.attached?
+                          = image_tag post.user.avatar, class: "trim-image-to-circle-s"
+                        - else
+                          = image_pack_tag 'default.png', class: "trim-image-to-circle-s"
+                    .col-md-8
+                      .postwrap
+                        .titlewrap.d-block
+                          = link_to post.title, post_path(post)
+                          = l post.created_at, format: :short
+                        .contentwrap
+                          = post.content
+                        .sub-informationWrap
+                          small コメント：
+                          sapn #{post.comments.count}件
+                          small 参考になった：
+                          small タグ： 
+                          - if post.tag_list.present?
+                            - post.tags.each do |tag|
+                              = link_to tag, home_path(tag: tag.name)
+                          - else
+                            span タグはありません
+                          small 閲覧数：
+                          = post.impressionist_count  
+          a.carousel-control-prev href="#carouselExampleControls" role="button" data-slide="prev"
+            span.carousel-control-prev-icon aria-hidden="true"
+            span.sr-only Previous
+          a.carousel-control-next href="#carouselExampleControls" role="button" data-slide="next"
+            span.carousel-control-next-icon aria-hidden="true"
+            span.sr-only Next
+
+    .aside-Wrap.col-md-3
+      .popularTagWrap.borderBottom
+        h6 話題のタグで検索
+        ul
+          li  〇〇
+          li  〇〇
+          li  〇〇
+      .linkWrap.borderBottom
+        h6 リンク
+        ul
+          li = link_to "ランクについて", ranking_like_path, class: "d-block"
+          li = link_to "災害小ネタ(特集)(未開設)", "#", class: "d-block"
+          li = link_to "お問い合わせ(未開設)", "#", class: "d-block"
+          li = link_to "利用規約(未開設)", "#", class: "d-block"
+          li = link_to "アプリを作った経緯(未開設)", "#", class: "d-block"
+          li = link_to "登録情報の変更", edit_user_registration_path, class: "d-block"
+          li = link_to "退会する", "#", class: "d-block"
+      .smallstoryWrap.borderBottom
+        h6  災害小ネタ(特集)
+        ul
+          li = link_to "地震で閉じ込められたら?(未開設)", "#", class: "d-block"
+          li = link_to "災害時必須アイテム(未開設)", "#", class: "d-block"
+          li = link_to "災害時必須アイテム(未開設)", "#", class: "d-block"
+          li = link_to "災害時必須アイテム(未開設)", "#", class: "d-block"
+          li = link_to "特集一覧へ▶︎(未開設)", "#", class: "d-block"
+      .rankingWrap.borderBottom
+        h6  今月のお役立ち君/お助け君
+        ul
+          li  〇〇
+          li  〇〇
+          li  〇〇
+
+
+ 

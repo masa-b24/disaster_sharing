@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year_month: MyString
+  prefecture: one
+  user1_id: 1
+  user2_id: 1
+  user3_id: 1
+
+two:
+  year_month: MyString
+  prefecture: two
+  user1_id: 1
+  user2_id: 1
+  user3_id: 1

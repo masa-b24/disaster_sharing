@@ -1,0 +1,323 @@
+.auth_title
+  h3
+    | ランキング
+.row
+  .rankingTitle
+    ul.nav.nav-tabs.nav-justified#myTab role="tablist"
+      li.nav-item = link_to "今月のランキング(お役立ち君)", ranking_like_path, class: "nav-link ranking_like_backgroud_color"
+      li.nav-item = link_to "今月のランキング(お助け君)", ranking_path, class: "nav-link ranking_backgroud_color active"
+  .ruralAreaWrap.ranking_backgroud_color
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 北海道・東北
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 北海道 
+          td = @rankings[0].user1.name unless @rankings[0].user1.blank?
+          td = @rankings[0].user2.name unless @rankings[0].user2.blank?
+          td = @rankings[0].user3.name unless @rankings[0].user3.blank?
+        tr
+          th scope="row" 青森
+          td = @rankings[1].user1.name unless @rankings[1].user1.blank?
+          td = @rankings[1].user2.name unless @rankings[1].user2.blank?
+          td = @rankings[1].user3.name unless @rankings[1].user3.blank?
+        tr
+          th scope="row" 岩手
+          td = @rankings[2].user1.name unless @rankings[2].user1.blank?
+          td = @rankings[2].user2.name unless @rankings[2].user2.blank?
+          td = @rankings[2].user3.name unless @rankings[2].user3.blank?
+        tr
+          th scope="row" 宮城
+          td = @rankings[3].user1.name unless @rankings[3].user1.blank?
+          td = @rankings[3].user2.name unless @rankings[3].user2.blank?
+          td = @rankings[3].user3.name unless @rankings[3].user3.blank?
+        tr
+          th scope="row" 秋田
+          td = @rankings[4].user1.name unless @rankings[4].user1.blank?
+          td = @rankings[4].user2.name unless @rankings[4].user2.blank?
+          td = @rankings[4].user3.name unless @rankings[4].user3.blank?
+        tr
+          th scope="row" 山形
+          td = @rankings[5].user1.name unless @rankings[5].user1.blank?
+          td = @rankings[5].user2.name unless @rankings[5].user2.blank?
+          td = @rankings[5].user3.name unless @rankings[5].user3.blank?
+        tr
+          th scope="row" 福島
+          td = @rankings[6].user1.name unless @rankings[6].user1.blank?
+          td = @rankings[6].user2.name unless @rankings[6].user2.blank?
+          td = @rankings[6].user3.name unless @rankings[6].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 関東
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 茨城
+          td = @rankings[7].user1.name unless @rankings[7].user1.blank?
+          td = @rankings[7].user2.name unless @rankings[7].user2.blank?
+          td = @rankings[7].user3.name unless @rankings[7].user3.blank?
+        tr
+          th scope="row" 栃木
+          td = @rankings[8].user1.name unless @rankings[8].user1.blank?
+          td = @rankings[8].user2.name unless @rankings[8].user2.blank?
+          td = @rankings[8].user3.name unless @rankings[8].user3.blank?
+        tr
+          th scope="row" 群馬
+          td = @rankings[9].user1.name unless @rankings[9].user1.blank?
+          td = @rankings[9].user2.name unless @rankings[9].user2.blank?
+          td = @rankings[9].user3.name unless @rankings[9].user3.blank?
+        tr
+          th scope="row" 埼玉
+          td = @rankings[10].user1.name unless @rankings[10].user1.blank?
+          td = @rankings[10].user2.name unless @rankings[10].user2.blank?
+          td = @rankings[10].user3.name unless @rankings[10].user3.blank?
+        tr
+          th scope="row" 千葉
+          td = @rankings[11].user1.name unless @rankings[11].user1.blank?
+          td = @rankings[11].user2.name unless @rankings[11].user2.blank?
+          td = @rankings[11].user3.name unless @rankings[11].user3.blank?
+        tr
+          th scope="row" 東京
+          td = @rankings[12].user1.name unless @rankings[12].user1.blank?
+          td = @rankings[12].user2.name unless @rankings[12].user2.blank?
+          td = @rankings[12].user3.name unless @rankings[12].user3.blank?
+        tr
+          th scope="row" 神奈川
+          td = @rankings[13].user1.name unless @rankings[13].user1.blank?
+          td = @rankings[13].user2.name unless @rankings[13].user2.blank?
+          td = @rankings[13].user3.name unless @rankings[13].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 北陸・甲信越
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 新潟
+          td = @rankings[14].user1.name unless @rankings[14].user1.blank?
+          td = @rankings[14].user2.name unless @rankings[14].user2.blank?
+          td = @rankings[14].user3.name unless @rankings[14].user3.blank?
+        tr
+          th scope="row" 富山
+          td = @rankings[15].user1.name unless @rankings[15].user1.blank?
+          td = @rankings[15].user2.name unless @rankings[15].user2.blank?
+          td = @rankings[15].user3.name unless @rankings[15].user3.blank?
+        tr
+          th scope="row" 石川
+          td = @rankings[16].user1.name unless @rankings[16].user1.blank?
+          td = @rankings[16].user2.name unless @rankings[16].user2.blank?
+          td = @rankings[16].user3.name unless @rankings[16].user3.blank?
+        tr
+          th scope="row" 福井
+          td = @rankings[17].user1.name unless @rankings[17].user1.blank?
+          td = @rankings[17].user2.name unless @rankings[17].user2.blank?
+          td = @rankings[17].user3.name unless @rankings[17].user3.blank?
+        tr
+          th scope="row" 山梨
+          td = @rankings[18].user1.name unless @rankings[18].user1.blank?
+          td = @rankings[18].user2.name unless @rankings[18].user2.blank?
+          td = @rankings[18].user3.name unless @rankings[18].user3.blank?
+        tr
+          th scope="row" 長野
+          td = @rankings[19].user1.name unless @rankings[19].user1.blank?
+          td = @rankings[19].user2.name unless @rankings[19].user2.blank?
+          td = @rankings[19].user3.name unless @rankings[19].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 中部
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 岐阜
+          td = @rankings[20].user1.name unless @rankings[20].user1.blank?
+          td = @rankings[20].user2.name unless @rankings[20].user2.blank?
+          td = @rankings[20].user3.name unless @rankings[20].user3.blank?
+        tr
+          th scope="row" 静岡
+          td = @rankings[21].user1.name unless @rankings[21].user1.blank?
+          td = @rankings[21].user2.name unless @rankings[21].user2.blank?
+          td = @rankings[21].user3.name unless @rankings[21].user3.blank?
+        tr
+          th scope="row" 愛知
+          td = @rankings[22].user1.name unless @rankings[22].user1.blank?
+          td = @rankings[22].user2.name unless @rankings[22].user2.blank?
+          td = @rankings[22].user3.name unless @rankings[22].user3.blank?
+        tr
+          th scope="row" 三重
+          td = @rankings[23].user1.name unless @rankings[23].user1.blank?
+          td = @rankings[23].user2.name unless @rankings[23].user2.blank?
+          td = @rankings[23].user3.name unless @rankings[23].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 関西
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 滋賀
+          td = @rankings[24].user1.name unless @rankings[24].user1.blank?
+          td = @rankings[24].user2.name unless @rankings[24].user2.blank?
+          td = @rankings[24].user3.name unless @rankings[24].user3.blank?
+        tr
+          th scope="row" 京都
+          td = @rankings[25].user1.name unless @rankings[25].user1.blank?
+          td = @rankings[25].user2.name unless @rankings[25].user2.blank?
+          td = @rankings[25].user3.name unless @rankings[25].user3.blank?
+        tr
+          th scope="row" 大阪
+          td = @rankings[26].user1.name unless @rankings[26].user1.blank?
+          td = @rankings[26].user2.name unless @rankings[26].user2.blank?
+          td = @rankings[26].user3.name unless @rankings[26].user3.blank?
+        tr
+          th scope="row" 兵庫
+          td = @rankings[27].user1.name unless @rankings[27].user1.blank?
+          td = @rankings[27].user2.name unless @rankings[27].user2.blank?
+          td = @rankings[27].user3.name unless @rankings[27].user3.blank?
+        tr
+          th scope="row" 奈良
+          td = @rankings[28].user1.name unless @rankings[28].user1.blank?
+          td = @rankings[28].user2.name unless @rankings[28].user2.blank?
+          td = @rankings[28].user3.name unless @rankings[28].user3.blank?
+        tr
+          th scope="row" 和歌山
+          td = @rankings[29].user1.name unless @rankings[29].user1.blank?
+          td = @rankings[29].user2.name unless @rankings[29].user2.blank?
+          td = @rankings[29].user3.name unless @rankings[29].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 中国
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 鳥取
+          td = @rankings[30].user1.name unless @rankings[30].user1.blank?
+          td = @rankings[30].user2.name unless @rankings[30].user2.blank?
+          td = @rankings[30].user3.name unless @rankings[30].user3.blank?
+        tr
+          th scope="row" 島根
+          td = @rankings[31].user1.name unless @rankings[31].user1.blank?
+          td = @rankings[31].user2.name unless @rankings[31].user2.blank?
+          td = @rankings[31].user3.name unless @rankings[31].user3.blank?
+        tr
+          th scope="row" 岡山
+          td = @rankings[32].user1.name unless @rankings[32].user1.blank?
+          td = @rankings[32].user2.name unless @rankings[32].user2.blank?
+          td = @rankings[32].user3.name unless @rankings[32].user3.blank?
+        tr
+          th scope="row" 広島
+          td = @rankings[33].user1.name unless @rankings[33].user1.blank?
+          td = @rankings[33].user2.name unless @rankings[33].user2.blank?
+          td = @rankings[33].user3.name unless @rankings[33].user3.blank?
+        tr
+          th scope="row" 山口
+          td = @rankings[34].user1.name unless @rankings[34].user1.blank?
+          td = @rankings[34].user2.name unless @rankings[34].user2.blank?
+          td = @rankings[34].user3.name unless @rankings[34].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 四国
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 徳島
+          td = @rankings[35].user1.name unless @rankings[35].user1.blank?
+          td = @rankings[35].user2.name unless @rankings[35].user2.blank?
+          td = @rankings[35].user3.name unless @rankings[35].user3.blank?
+        tr
+          th scope="row" 香川
+          td = @rankings[36].user1.name unless @rankings[36].user1.blank?
+          td = @rankings[36].user2.name unless @rankings[36].user2.blank?
+          td = @rankings[36].user3.name unless @rankings[36].user3.blank?
+        tr
+          th scope="row" 愛媛
+          td = @rankings[37].user1.name unless @rankings[37].user1.blank?
+          td = @rankings[37].user2.name unless @rankings[37].user2.blank?
+          td = @rankings[37].user3.name unless @rankings[37].user3.blank?
+        tr
+          th scope="row" 高知
+          td = @rankings[38].user1.name unless @rankings[38].user1.blank?
+          td = @rankings[38].user2.name unless @rankings[38].user2.blank?
+          td = @rankings[38].user3.name unless @rankings[38].user3.blank?
+    table.table.table-sm.caption-top.ruralWrap.d-inline-block.w-50
+      caption 九州・沖縄
+      thead
+        tr
+          th.shortcell scope="col"  #
+          th.normalcell scope="col"  1位
+          th.normalcell scope="col"  2位
+          th.normalcell scope="col"  3位
+      tbody
+        tr
+          th scope="row" 福岡
+          td = @rankings[39].user1.name unless @rankings[39].user1.blank?
+          td = @rankings[39].user2.name unless @rankings[39].user2.blank?
+          td = @rankings[39].user3.name unless @rankings[39].user3.blank?
+        tr
+          th scope="row" 佐賀
+          td = @rankings[40].user1.name unless @rankings[40].user1.blank?
+          td = @rankings[40].user2.name unless @rankings[40].user2.blank?
+          td = @rankings[40].user3.name unless @rankings[40].user3.blank?
+        tr
+          th scope="row" 長崎
+          td = @rankings[41].user1.name unless @rankings[41].user1.blank?
+          td = @rankings[41].user2.name unless @rankings[41].user2.blank?
+          td = @rankings[41].user3.name unless @rankings[41].user3.blank?
+        tr
+          th scope="row" 熊本
+          td = @rankings[42].user1.name unless @rankings[42].user1.blank?
+          td = @rankings[42].user2.name unless @rankings[42].user2.blank?
+          td = @rankings[42].user3.name unless @rankings[42].user3.blank?
+        tr
+          th scope="row" 大分
+          td = @rankings[43].user1.name unless @rankings[43].user1.blank?
+          td = @rankings[43].user2.name unless @rankings[43].user2.blank?
+          td = @rankings[43].user3.name unless @rankings[43].user3.blank?
+        tr
+          th scope="row" 宮崎
+          td = @rankings[44].user1.name unless @rankings[44].user1.blank?
+          td = @rankings[44].user2.name unless @rankings[44].user2.blank?
+          td = @rankings[44].user3.name unless @rankings[44].user3.blank?
+        tr
+          th scope="row" 鹿児島
+          td = @rankings[45].user1.name unless @rankings[45].user1.blank?
+          td = @rankings[45].user2.name unless @rankings[45].user2.blank?
+          td = @rankings[45].user3.name unless @rankings[45].user3.blank?
+        tr
+          th scope="row" 沖縄
+          td = @rankings[46].user1.name unless @rankings[46].user1.blank?
+          td = @rankings[46].user2.name unless @rankings[46].user2.blank?
+          td = @rankings[46].user3.name unless @rankings[46].user3.blank?
+  
+  h5.rankingTitle ランクについて
+  p ほかのユーザーからの"役に立った"や"ベストコメント"の数によって、各都道府県ごとのTOP3が毎月選ばれます。
+  p ランクは毎月更新され、先月の結果によってユーザー画像の周りに色がつきます。
+
+  p 一度でも今月のお助け君 又は お役立ち君になったユーザーは編集画面から王冠の設定ができます。
+  p 表示/非表示は設定で変更できます。

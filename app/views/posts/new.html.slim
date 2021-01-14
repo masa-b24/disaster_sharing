@@ -1,0 +1,32 @@
+.auth_title
+  section
+    h3
+      | 新規投稿
+.row
+  .col-md-6.offset-md-3
+    .auth_form
+      = form_with model: @post, local: true do |f|
+        = render "shared/error_messages", object: f.object
+        .field.mb-3
+          = f.label :title
+          = f.text_field :title, class: "form-control"
+        .field.mb-3
+          = f.label :content
+          = f.text_area :content, class: "form-control"
+        .field.mb-3
+          = f.label :prefecture_id, "都道府県"
+          br
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: current_user.prefecture_id
+        .field.mb-3
+          = f.label :images, "画像"
+          br
+          = f.file_field :images, multiple: true
+        .field.mb-3
+          = f.label :tag_list, "タグ"
+          = f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control"
+        .field.mb-3
+          = f.label :request_help, "お助け申請"
+          br
+          = f.check_box :request_help, {}, checked_value = "true", unchecked_value = "false"
+        .actions
+          = f.submit "投稿", class: "btn btn-success btn-block"
