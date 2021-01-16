@@ -202,9 +202,11 @@
       .popularTagWrap.borderBottom
         h6 話題のタグで検索
         ul
-          li  〇〇
-          li  〇〇
-          li  〇〇
+          - if @tags.present?
+            - @tags.each do |tag|
+              li= link_to "#{tag.name}(#{tag.taggings_count})", home_path(tag: tag.name)
+          - else
+            p 登録されているタグはありません
       .linkWrap.borderBottom
         h6 リンク
         ul
