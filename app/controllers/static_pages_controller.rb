@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def top
     @posts = Post.order('impressions_count DESC').take(6)
+    @tags = Post.tag_counts_on(:tags).most_used(5)
   end
 
   def guide
