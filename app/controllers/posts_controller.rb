@@ -21,6 +21,15 @@ class PostsController < ApplicationController
       render :new
     end
   end
+  
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to @post, notice: 'BA was successfully updated.' 
+    else
+      render home_path
+    end
+  end
 
   def destroy
     @post = Post.find(params[:id])
